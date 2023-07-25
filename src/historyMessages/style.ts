@@ -7,9 +7,6 @@ export const style: Record<string, CSSProperties> = {
   leftSider: {
     padding: "60px 20px"
   },
-  buttonForm: {
-    width: "100%",
-  },
   header: {
     padding: 0,
   },
