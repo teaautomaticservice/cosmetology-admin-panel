@@ -2,13 +2,13 @@ import React from "react";
 import { Space, Table, Button } from 'antd';
 import type { ColumnsType } from 'antd/es/table';
 
-import type { History } from "../../../typings/api/historyMessage";
+import type { History } from "../../../../typings/api/historyMessage";
 import { useTableMessages } from "./services/useTableMessages";
-import { dateUtils } from "../../../utils/dateUtils";
+import { dateUtils } from "../../../../utils/dateUtils";
 
 
 export const TableMessages: React.FC = () => {
-  const { data, deleteMessage } = useTableMessages();
+  const { data, deleteMessage, editMessage, isHistoryLoading } = useTableMessages();
 
   const columns: ColumnsType<History> = [
     {
@@ -40,7 +40,7 @@ export const TableMessages: React.FC = () => {
       width: '200px',
       render: (_, record) => (
         <Space size="middle">
-          <Button type="default" size="small">
+          <Button type="default" htmlType="button" size="small" onClick={() => editMessage(record)}>
             Change message
           </Button>
           <Button type="default" htmlType="button" size="small" onClick={() => deleteMessage(record.id)}>
@@ -52,6 +52,6 @@ export const TableMessages: React.FC = () => {
   ];
 
   return(
-    <Table columns={columns} dataSource={data} rowKey={"id"} />
+    <Table columns={columns} dataSource={data} rowKey={"id"} loading={isHistoryLoading} />
   );
 };

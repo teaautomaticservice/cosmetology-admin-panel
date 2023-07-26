@@ -13,4 +13,7 @@ export const style: Record<string, CSSProperties> = {
   content: {
     margin: '16px',
   },
+  tableWrap: {
+    width: "100%",
+  }
 };

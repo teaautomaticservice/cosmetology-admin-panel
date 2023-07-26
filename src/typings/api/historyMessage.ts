@@ -3,7 +3,7 @@ import type { ID } from "../common";
 
 export interface History {
   id: ID;
-  date: Date;
+  date: string;
   owner: string;
   message: string;
 }
