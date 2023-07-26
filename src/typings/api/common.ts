@@ -8,6 +8,6 @@ export interface Meta {
 }
 
 export interface List<CurrentType> {
-  data: CurrentType;
+  data: CurrentType[];
   meta: Meta;
 }
