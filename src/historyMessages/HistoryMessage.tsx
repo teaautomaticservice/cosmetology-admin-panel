@@ -2,7 +2,7 @@ import React from "react";
 import { Layout } from 'antd';
 
 import { style } from "./style";
-import { AddMessageForm } from "./components/addMessageForm/test";
+import { AddMessageForm } from "./components/addMessageForm/AddMessageForm";
 import { useHistoryMessage } from "./services/useHistoryMessage"; 
 
 const { Header, Content, Sider } = Layout;
