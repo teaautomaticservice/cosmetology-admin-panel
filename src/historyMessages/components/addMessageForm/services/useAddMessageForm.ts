@@ -8,7 +8,7 @@ import { useHistoryMessagesStore } from "../../../../stores/historyMessages";
 export const useAddMessageForm = () => {
   const { updateHistoryMessages, updateHistoryMessagesFromApi } = useHistoryMessagesStore();
 
-  const { handleSubmit, control: formControl } = useForm({
+  const { handleSubmit, control: formControl, reset } = useForm({
     defaultValues: {
       message: "",
     }
@@ -17,6 +17,7 @@ export const useAddMessageForm = () => {
   const formSubmitHandler: SubmitHandler<HistoryForm> = async ({message}) => {
     const { data } = await historyMessagesMethods.addHistory(message);
     updateHistoryMessages(data);
+    reset();
   };
 
   const submitForm = handleSubmit(formSubmitHandler);

@@ -1,17 +1,13 @@
 import React from "react";
-import { Layout } from 'antd';
+import { Layout, Space } from 'antd';
 
 import { style } from "./style";
 import { AddMessageForm } from "./components/addMessageForm/AddMessageForm";
-import { useHistoryMessage } from "./services/useHistoryMessage"; 
+import { TableMessages } from "./components/tableMessages/TableMessages";
 
 const { Header, Content, Sider } = Layout;
 
 export const HistoryMessage: React.FC = () => {
-  const { historyMessages } = useHistoryMessage();
-
-  const listEl = historyMessages.map((val) => (<h3 key={val.id}>{val.message}</h3>));
-
   return (
     <Layout style={style.layout}>
       <Sider style={style.leftSider}>
@@ -22,8 +18,7 @@ export const HistoryMessage: React.FC = () => {
           <h1>Header</h1>
         </Header>
         <Content style={style.content}>
-          <h1>Content</h1>
-          {listEl}
+          <TableMessages />
         </Content>
       </Layout>
     </Layout>

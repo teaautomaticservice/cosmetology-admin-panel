@@ -11,6 +11,6 @@ export const style: Record<string, CSSProperties> = {
     padding: 0,
   },
   content: {
-    margin: '0 16px',
+    margin: '16px',
   },
 };

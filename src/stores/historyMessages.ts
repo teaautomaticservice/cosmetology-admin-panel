@@ -1,5 +1,5 @@
+import type { History } from "../typings/api/historyMessage";
 import { storeFactory } from "../utils/storeFactory";
-import { History } from "../typings/api/historyMessage";
 
 import { historyMessagesMethods } from "../apiMethods/historyMessages";
 
