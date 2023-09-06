@@ -1,0 +1,21 @@
+services:
+  cosmetology-server:
+    image: dahakalab/cosmetology-backend:latest
+    container_name: cosmetology-server
+    restart: always
+    ports:
+      - 3000:3000
+
+  cosmetology-admin-panel:
+    depends_on:
+      - cosmetology-server
+    build:
+      dockerfile: Dockerfile
+    container_name: cosmetology-admin-panel
+    ports:
+      - 5000:5000
+    environment:
+      - REACT_APP_API_URL=http://host.docker.internal:3000
+    volumes:
+      - /app/node_modules
+      - ./:/app
