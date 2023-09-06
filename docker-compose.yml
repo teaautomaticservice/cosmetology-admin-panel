@@ -11,8 +11,6 @@ services:
       - cosmetology-server
     build:
       dockerfile: Dockerfile
-      args:
-        - API_URL=http://host.docker.internal:3000
     container_name: cosmetology-admin-panel
     ports:
       - 5000:5000
