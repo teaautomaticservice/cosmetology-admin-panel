@@ -1,3 +1,6 @@
+volumes:
+  build:
+
 services:
   cosmetology-server:
     image: dahakalab/cosmetology-backend:latest
@@ -12,8 +15,17 @@ services:
     build:
       dockerfile: Dockerfile
     container_name: cosmetology-admin-panel
-    ports:
-      - 5000:5000
     volumes:
-      - /app/node_modules
-      - ./:/app
+      - build:/app/build
+
+  cosmetology-web-server:
+    depends_on:
+      - cosmetology-admin-panel
+    image: nginx:alpine
+    container_name: cosmetology-client-server
+    restart: always
+    ports:
+      - "5000:5000"
+    volumes:
+      - ./nginx/default.conf:/etc/nginx/conf.d/default.conf:ro
+      - build:/usr/share/nginx/html:ro
