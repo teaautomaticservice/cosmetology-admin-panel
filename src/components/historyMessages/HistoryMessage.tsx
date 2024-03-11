@@ -6,11 +6,17 @@ import { AddMessageForm } from "./components/addMessageForm/AddMessageForm";
 import { TableMessages } from "./components/tableMessages/TableMessages";
 import { MessageModal } from "./components/messageModal/MessageModal";
 import { useHistoryMessage } from "./services/useHistoryMessage";
+import { transport } from '../../utils/transport';
 
 const { Header, Content, Sider } = Layout;
 
 export const HistoryMessage: React.FC = () => {
   const { updateHistories, isHistoryLoading } = useHistoryMessage();
+
+  const test = async () => {
+    const { data } = await transport.get('/logs/list');
+    console.log(data);
+  }
 
   return (
     <Layout style={style.layout}>
@@ -24,6 +30,7 @@ export const HistoryMessage: React.FC = () => {
         <Content style={style.content}>
           <Space direction="vertical" style={style.tableWrap}>
             <Button type="primary" loading={isHistoryLoading} onClick={updateHistories}>Refresh data</Button>
+            <Button type="primary" onClick={test}>Logs</Button>
             <TableMessages />
           </Space>
         </Content>

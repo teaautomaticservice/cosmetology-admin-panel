@@ -1,7 +1,6 @@
 import React from "react";
-import { ConfigProvider, ThemeConfig, theme } from "antd";
-
-const colors = theme.getDesignToken();
+import { ConfigProvider, ThemeConfig,  } from "antd";
+import { colors } from './colors';
 
 const themeConfig: ThemeConfig = {
   token: {
@@ -9,8 +8,8 @@ const themeConfig: ThemeConfig = {
   },
   components: {
     Layout: {
-      colorBgBody: colors.red1,
-      colorBgHeader: colors.red3,
+      bodyBg: colors.red1,
+      headerBg: colors.red3,
     },
   },
 };
