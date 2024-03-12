@@ -12,7 +12,7 @@ export const AddMessageForm: React.FC = () => {
     <>
       <h3>Add message</h3>
       <form action="" onSubmit={submitForm} >
-        <Space direction="vertical">
+        <Space direction="horizontal">
           <Controller name="message" control={formControl} render={({ field } ) => <Input {...field }/>}/>
           <Button type="primary" htmlType="submit" style={style.buttonForm}>Отправить запрос</Button>
         </Space>
