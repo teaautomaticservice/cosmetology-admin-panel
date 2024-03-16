@@ -1,4 +1,3 @@
-import { useEffect } from 'react';
 import { Layout, Space, Menu, MenuProps, Typography } from 'antd';
 import { useNavigate, useLocation } from "react-router-dom";
 

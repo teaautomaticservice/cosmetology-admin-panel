@@ -6,7 +6,6 @@ import { useTableMessages } from "./services/useTableMessages";
 import { dateUtils } from '../../../../../utils/dateUtils';
 import { History } from '../../../../../typings/api/historyMessage';
 
-
 export const TableMessages: React.FC = () => {
   const { data, deleteMessage, editMessage, isHistoryLoading } = useTableMessages();
 
@@ -51,7 +50,7 @@ export const TableMessages: React.FC = () => {
     },
   ];
 
-  return(
+  return (
     <Table columns={columns} dataSource={data} rowKey={"id"} loading={isHistoryLoading} />
   );
 };

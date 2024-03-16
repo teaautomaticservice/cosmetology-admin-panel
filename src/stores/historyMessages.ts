@@ -17,7 +17,6 @@ export const useHistoryMessagesStore = () => {
   const isHistoryLoading = useIsLoadingStore();
   const setIsLoading = useIsLoadingNewDataEvent();
 
-
   const handleResponse = async () => {
     setIsLoading(true);
     const { data } = await historyMessagesMethods.getMessageList();
