@@ -3,7 +3,7 @@ import { Layout, Space, Menu, MenuProps, Typography } from 'antd';
 import { useNavigate, useLocation } from "react-router-dom";
 
 import { style } from "./style";
-import { MessageModal } from '../../historyMessages/components/messageModal/MessageModal';
+import { MessageModal } from '../../domain/historyMessages/components/messageModal/MessageModal';
 import { paths } from '../../../router/paths';
 import { MenuClickEventHandler } from 'rc-menu/lib/interface';
 
