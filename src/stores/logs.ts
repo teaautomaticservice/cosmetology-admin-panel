@@ -9,14 +9,12 @@ const {
 
 const {
   useStore: useIsLoadingStore,
-  useNewDataEvent: useIsLoadingNewDataEvent,
 } = storeFactory<boolean>(false);
 
 export const useLogsStore = () => {
-  const logsList = useLogsListStore();
+  const [logsList] = useLogsListStore();
 
-  const isLogsListLoading = useIsLoadingStore();
-  const setIsLoading = useIsLoadingNewDataEvent();
+  const [isLogsListLoading, setIsLoading] = useIsLoadingStore();
 
   const handleResponse = async () => {
     setIsLoading(true);

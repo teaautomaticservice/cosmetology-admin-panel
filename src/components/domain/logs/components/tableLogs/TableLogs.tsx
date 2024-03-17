@@ -1,16 +1,12 @@
 import { useEffect } from 'react';
-import { Space, Table, Button } from 'antd';
+import { Table } from 'antd';
 import { ColumnsType } from 'antd/es/table';
 
-import { Logs } from '../../../../../typings/api/logs';
+import type { Logs } from '../../../../../typings/api/logs';
 import { useLogsStore } from '../../../../../stores/logs';
 
 export const TableLogs: React.FC = () => {
   const { logsList, updateLogsFromApi, isLogsListLoading } = useLogsStore();
-  
-  const test = () => {
-    console.log(logsList);
-  }
 
   const columns: ColumnsType<Logs> = [
     {
