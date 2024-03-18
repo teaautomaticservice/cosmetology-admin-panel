@@ -9,7 +9,8 @@ const urls = {
 
 export const logsListMethods = {
   getLogsList: async () => {
-    const { data } = await transport.get<LogsList>(urls.logsList);
+    const params = window.location.search;
+    const { data } = await transport.get<LogsList>(`${urls.logsList}${params}`);
     return data;
   }
 }

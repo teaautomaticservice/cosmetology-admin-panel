@@ -32,14 +32,14 @@ export const storeFactory = <State>(initValue: State) => {
   const changeEvent = createStoreEvent<State>((_, payload) => payload);
 
   return {
-    createStoreEvent,
-    useEvent: <Payload = State>(event: Event<Payload>) => useEvent(event),
     useStore: (): UsedStore<State> => [
       useStore($currentStore),
       useEvent(changeEvent),
     ],
+    useCreateEffect,
+    createStoreEvent,
+    useEvent: <Payload = State>(event: Event<Payload>) => useEvent(event),
     useChangeEvent: <Payload = State>(reducer: Reducer<State, Payload>) => useEvent(createStoreEvent(reducer)),
     useNewEvent: (reducer: Reducer<State, State>) => useEvent(createStoreEvent(reducer)),
-    useCreateEffect,
   };
 };
