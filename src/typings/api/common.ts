@@ -1,13 +1,10 @@
 export interface Pagination {
-  itemsCount: number;
-  itemsCurrent: [number, number];
-}
-
-export interface Meta {
-  pagination: Pagination;
+  count: number,
+  page: number,
+  pageSize: number,
 }
 
 export interface List<CurrentType> {
   data: CurrentType[];
-  meta: Meta;
+  meta: Pagination;
 }

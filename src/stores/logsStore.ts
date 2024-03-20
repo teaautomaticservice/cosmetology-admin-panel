@@ -5,7 +5,13 @@ import { storeFactory } from '../utils/storeFactory';
 const {
   useStore: useLogsListStore,
   useCreateEffect: useLogsListCreateEffect,
-} = storeFactory<Logs[]>([]);
+} = storeFactory<{
+  data: Logs[],
+  count: number,
+}>({
+  data: [],
+  count: 0,
+});
 
 const {
   useStore: useIsLoadingStore,
@@ -17,10 +23,14 @@ export const useLogsStore = () => {
   const [isLogsListLoading, setIsLoading] = useIsLoadingStore();
 
   const handleResponse = async () => {
+    console.log('handleResponse');
     setIsLoading(true);
-    const { data } = await logsListMethods.getLogsList();
+    const { data, meta } = await logsListMethods.getLogsList();
     setIsLoading(false);
-    return data;
+    return {
+      data,
+      count: meta.count,
+    };
   }
 
   const updateLogsFromApi = useLogsListCreateEffect<void>(handleResponse)

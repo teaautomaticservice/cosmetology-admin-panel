@@ -2,6 +2,7 @@ import type { Event } from "effector";
 import type { AxiosError } from "axios";
 import { createStore, createEvent, createEffect } from "effector";
 import { useStore, useEvent } from "effector-react";
+import { debounce } from 'lodash';
 
 type Reducer<State, Payload> = (state: State, payload: Payload) => State | void;
 
@@ -26,7 +27,7 @@ export const storeFactory = <State>(initValue: State) => {
   const useCreateEffect = <Params>(handler: Function) => {
     const effect = createEffect<Params, State, AxiosError>(handler);
     subscribeTriggerOnStore(effect.doneData, (_, payload) => payload);
-    return useEvent(effect);
+    return debounce(useEvent(effect), 100);
   };
 
   const changeEvent = createStoreEvent<State>((_, payload) => payload);

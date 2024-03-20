@@ -16,6 +16,7 @@
     "date-fns": "^2.30.0",
     "effector": "^22.8.6",
     "effector-react": "^22.5.3",
+    "lodash": "^4.17.21",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
     "react-hook-form": "^7.45.2",
@@ -51,6 +52,7 @@
   },
   "devDependencies": {
     "@babel/plugin-proposal-private-property-in-object": "^7.21.11",
+    "@types/lodash": "^4.17.0",
     "react-inject-env": "^2.1.0"
   }
 }
