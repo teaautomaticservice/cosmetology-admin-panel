@@ -23,7 +23,6 @@ export const useLogsStore = () => {
   const [isLogsListLoading, setIsLoading] = useIsLoadingStore();
 
   const handleResponse = async () => {
-    console.log('handleResponse');
     setIsLoading(true);
     const { data, meta } = await logsListMethods.getLogsList();
     setIsLoading(false);
