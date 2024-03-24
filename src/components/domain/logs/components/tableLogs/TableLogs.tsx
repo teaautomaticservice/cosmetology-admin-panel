@@ -1,6 +1,7 @@
 import { useEffect } from 'react';
 import { PaginationProps, Table } from 'antd';
 import { ColumnsType } from 'antd/es/table';
+import { debounce } from 'lodash';
 
 import type { Logs } from '../../../../../typings/api/logs';
 import { useLogsStore } from '../../../../../stores/logsStore';
@@ -9,6 +10,8 @@ import { useParams } from '../../../../../hooks/useParams';
 export const TableLogs: React.FC = () => {
   const { logsList, updateLogsFromApi, isLogsListLoading } = useLogsStore();
   const { params, setParams } = useParams();
+
+  const debouncedListUpdate = debounce(updateLogsFromApi, 100);
 
   const columns: ColumnsType<Logs> = [
     {
@@ -43,7 +46,7 @@ export const TableLogs: React.FC = () => {
       page: page.toString(),
       pageSize: pageSize.toString(),
     });
-    updateLogsFromApi();
+    debouncedListUpdate();
   };
 
   useEffect(() => {
