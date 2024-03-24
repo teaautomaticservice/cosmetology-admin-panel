@@ -5,6 +5,11 @@ import { useStore, useEvent } from "effector-react";
 
 type Reducer<State, Payload> = (state: State, payload: Payload) => State | void;
 
+type UsedStore<State> = [
+  ReturnType<typeof useStore<State>>,
+  ((payload: State) => State),
+];
+
 export const storeFactory = <State>(initValue: State) => {
   const $currentStore = createStore<State>(initValue);
 
@@ -27,12 +32,14 @@ export const storeFactory = <State>(initValue: State) => {
   const changeEvent = createStoreEvent<State>((_, payload) => payload);
 
   return {
+    useStore: (): UsedStore<State> => [
+      useStore($currentStore),
+      useEvent(changeEvent),
+    ],
+    useCreateEffect,
     createStoreEvent,
     useEvent: <Payload = State>(event: Event<Payload>) => useEvent(event),
-    useStore: () => useStore($currentStore),
-    useNewDataEvent: () => useEvent(changeEvent),
     useChangeEvent: <Payload = State>(reducer: Reducer<State, Payload>) => useEvent(createStoreEvent(reducer)),
     useNewEvent: (reducer: Reducer<State, State>) => useEvent(createStoreEvent(reducer)),
-    useCreateEffect,
   };
 };

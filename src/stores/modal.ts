@@ -10,7 +10,7 @@ const { useStore, useChangeEvent } = storeFactory<ModalStore>({
 });
 
 export const useModalStore = () => {
-  const store = useStore();
+  const [store] = useStore();
 
   const close = useChangeEvent<void>((state) => ({
     ...state,

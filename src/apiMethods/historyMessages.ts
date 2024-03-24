@@ -5,18 +5,18 @@ import { transport } from "../utils/transport";
 
 const baseUrl = (path = "") => `/history${path}`;
 
-const historyMessagesUrls = {
+const urls = {
   messageList: baseUrl("/list"),
   messageById: (id: ID) => baseUrl(`/${id}`),
 };
 
 export const historyMessagesMethods = {
   getMessageList: async () => {
-    const { data } = await transport.get<HistoryList>(historyMessagesUrls.messageList);
+    const { data } = await transport.get<HistoryList>(urls.messageList);
     return data;
   },
   getHistoryById: async (id: ID) => {
-    const { data } = await transport.get<History>(historyMessagesUrls.messageById(id));
+    const { data } = await transport.get<History>(urls.messageById(id));
     return data;
   },
   addHistory: async (message: string) => {
@@ -24,11 +24,11 @@ export const historyMessagesMethods = {
     return data;
   },
   updateHistory: async (id: ID, message: string) => {
-    const { data } = await transport.patch<HistoryList>(historyMessagesUrls.messageById(id), { message });
+    const { data } = await transport.patch<HistoryList>(urls.messageById(id), { message });
     return data;
   },
   removeHistory: async (id: ID) => {
-    const { data } = await transport.delete<HistoryList>(historyMessagesUrls.messageById(id));
+    const { data } = await transport.delete<HistoryList>(urls.messageById(id));
     return data;
   },
 };
