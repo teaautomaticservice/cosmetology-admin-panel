@@ -1,5 +1,5 @@
 import type { ID } from "../typings/common";
-import type { HistoryList, History } from "../typings/api/historyMessage";
+import type { HistoryPaginated, History } from "../typings/api/historyMessage";
 
 import { transport } from "../utils/transport";
 
@@ -12,7 +12,7 @@ const urls = {
 
 export const historyMessagesMethods = {
   getMessageList: async () => {
-    const { data } = await transport.get<HistoryList>(urls.messageList);
+    const { data } = await transport.get<HistoryPaginated>(urls.messageList);
     return data;
   },
   getHistoryById: async (id: ID) => {
@@ -20,15 +20,15 @@ export const historyMessagesMethods = {
     return data;
   },
   addHistory: async (message: string) => {
-    const { data } = await transport.post<HistoryList>(baseUrl(), { message });
+    const { data } = await transport.post<HistoryPaginated>(baseUrl(), { message });
     return data;
   },
   updateHistory: async (id: ID, message: string) => {
-    const { data } = await transport.patch<HistoryList>(urls.messageById(id), { message });
+    const { data } = await transport.patch<HistoryPaginated>(urls.messageById(id), { message });
     return data;
   },
   removeHistory: async (id: ID) => {
-    const { data } = await transport.delete<HistoryList>(urls.messageById(id));
+    const { data } = await transport.delete<HistoryPaginated>(urls.messageById(id));
     return data;
   },
 };
