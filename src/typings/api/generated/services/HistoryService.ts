@@ -2,14 +2,15 @@
 /* istanbul ignore file */
 /* tslint:disable */
 /* eslint-disable */
+import type { HistoryDto } from '../models/HistoryDto';
 import type { HistoryPaginatedDto } from '../models/HistoryPaginatedDto';
-import type { MessageDto } from '../models/MessageDto';
+import type { UpdateHistoryDto } from '../models/UpdateHistoryDto';
 import type { CancelablePromise } from '../core/CancelablePromise';
 import { OpenAPI } from '../core/OpenAPI';
 import { request as __request } from '../core/request';
 export class HistoryService {
     /**
-     * @returns HistoryPaginatedDto Successful signup
+     * @returns HistoryPaginatedDto List of history successful has been got
      * @throws ApiError
      */
     public static historyControllerGetList(): CancelablePromise<HistoryPaginatedDto> {
@@ -19,48 +20,75 @@ export class HistoryService {
         });
     }
     /**
-     * @returns any
+     * @returns HistoryDto History successful has been got
      * @throws ApiError
      */
-    public static historyControllerGetItem(): CancelablePromise<any> {
+    public static historyControllerGetItem({
+        id,
+    }: {
+        id: string,
+    }): CancelablePromise<HistoryDto> {
         return __request(OpenAPI, {
             method: 'GET',
             url: '/history/{id}',
+            path: {
+                'id': id,
+            },
         });
     }
     /**
-     * @param requestBody
-     * @returns any
+     * @returns HistoryPaginatedDto History successful has been got
      * @throws ApiError
      */
-    public static historyControllerUpdateItem(
-        requestBody: MessageDto,
-    ): CancelablePromise<any> {
+    public static historyControllerUpdateItem({
+        id,
+        requestBody,
+    }: {
+        id: string,
+        /**
+         * Update history body
+         */
+        requestBody: UpdateHistoryDto,
+    }): CancelablePromise<HistoryPaginatedDto> {
         return __request(OpenAPI, {
             method: 'PATCH',
             url: '/history/{id}',
+            path: {
+                'id': id,
+            },
             body: requestBody,
             mediaType: 'application/json',
         });
     }
     /**
-     * @returns any
+     * @returns HistoryPaginatedDto History successful has been got
      * @throws ApiError
      */
-    public static historyControllerRemoveItem(): CancelablePromise<any> {
+    public static historyControllerRemoveItem({
+        id,
+    }: {
+        id: string,
+    }): CancelablePromise<HistoryPaginatedDto> {
         return __request(OpenAPI, {
             method: 'DELETE',
             url: '/history/{id}',
+            path: {
+                'id': id,
+            },
         });
     }
     /**
-     * @param requestBody
-     * @returns any
+     * @returns HistoryDto History successful has been got
      * @throws ApiError
      */
-    public static historyControllerAddItem(
-        requestBody: MessageDto,
-    ): CancelablePromise<any> {
+    public static historyControllerAddItem({
+        requestBody,
+    }: {
+        /**
+         * Update history body
+         */
+        requestBody: UpdateHistoryDto,
+    }): CancelablePromise<HistoryDto> {
         return __request(OpenAPI, {
             method: 'POST',
             url: '/history',

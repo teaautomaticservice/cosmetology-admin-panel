@@ -1,16 +1,13 @@
-import { LogsList } from '../typings/api/logs'
-import { transport } from '../utils/transport'
-
-const baseUrl = (path = '') => `/logs${path}`;
-
-const urls = {
-  logsList: baseUrl('/list'),
-}
+import { LogsService } from '../typings/api/generated';
+import { getSearchParams } from '../utils/getSearchParams';
 
 export const logsListMethods = {
   getLogsList: async () => {
-    const params = window.location.search;
-    const { data } = await transport.get<LogsList>(`${urls.logsList}${params}`);
+    const { page, pageSize } = getSearchParams<{ page?: string; pageSize?: string; }>();
+    const data = await LogsService.logsControllerGetList({
+      page,
+      pageSize,
+    });
     return data;
   }
 }

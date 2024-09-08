@@ -2,24 +2,26 @@
 /* istanbul ignore file */
 /* tslint:disable */
 /* eslint-disable */
+import type { LogsPaginatedDto } from '../models/LogsPaginatedDto';
 import type { CancelablePromise } from '../core/CancelablePromise';
 import { OpenAPI } from '../core/OpenAPI';
 import { request as __request } from '../core/request';
-export class DefaultService {
+export class LogsService {
     /**
-     * @param page
-     * @param pageSize
-     * @returns any
+     * @returns LogsPaginatedDto List of logs successful has been got
      * @throws ApiError
      */
-    public static logsControllerGetList(
-        page: string,
-        pageSize: string,
-    ): CancelablePromise<any> {
+    public static logsControllerGetList({
+        page,
+        pageSize,
+    }: {
+        page?: string,
+        pageSize?: string,
+    }): CancelablePromise<LogsPaginatedDto> {
         return __request(OpenAPI, {
             method: 'GET',
             url: '/logs/list',
-            query: {
+            path: {
                 'page': page,
                 'pageSize': pageSize,
             },

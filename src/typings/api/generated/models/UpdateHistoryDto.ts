@@ -2,6 +2,7 @@
 /* istanbul ignore file */
 /* tslint:disable */
 /* eslint-disable */
-export type MessageDto = {
+export type UpdateHistoryDto = {
+    message: string;
 };
 

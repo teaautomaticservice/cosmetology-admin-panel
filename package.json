@@ -5,10 +5,11 @@
   "scripts": {
     "start": "react-scripts start",
     "build": "react-scripts build",
-    "lint": "eslint \"{src,apps,libs,test}/**/*.ts\" --fix",
+    "lint": "eslint \"{src,apps,libs,test}/**/*.ts\"",
+    "lint:fix": "eslint \"{src,apps,libs,test}/**/*.ts\" --fix",
     "test": "react-scripts test",
     "eject": "react-scripts eject",
-    "openapi": "openapi -i http://localhost:3000/swagger/json -o src/typings/api/generated"
+    "openapi": "openapi -i http://localhost:3000/swagger/json -o src/typings/api/generated --request ./openapi/request.ts --useOptions"
   },
   "eslintConfig": {
     "extends": [
