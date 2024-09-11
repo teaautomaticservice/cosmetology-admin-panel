@@ -78,7 +78,7 @@ export class HistoryService {
         });
     }
     /**
-     * @returns HistoryDto History successful has been got
+     * @returns HistoryPaginatedDto History successful has been got
      * @throws ApiError
      */
     public static historyControllerAddItem({
@@ -88,7 +88,7 @@ export class HistoryService {
          * Update history body
          */
         requestBody: UpdateHistoryDto,
-    }): CancelablePromise<HistoryDto> {
+    }): CancelablePromise<HistoryPaginatedDto> {
         return __request(OpenAPI, {
             method: 'POST',
             url: '/history',

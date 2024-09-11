@@ -8,7 +8,8 @@ export const request = <T>(config: OpenAPIConfig, options: ApiRequestOptions): C
     transport.request<T>({
       url: options.url,
       method: options.method,
-      params: options.path,
+      params: new URLSearchParams(options.path),
+      data: options.body,
     })
       .then(({ data }) => resolve(data))
       .catch((error) => reject(error));

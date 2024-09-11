@@ -1,7 +1,7 @@
 
 import type { ID } from '../../../../../../typings/common';
 import { useHistoryMessagesStore } from '../../../../../../stores/historyMessages';
-import { historyMessagesMethods } from '../../../../../../apiMethods/historyMessages';
+import { historyMessagesMethods } from '../../../../../../apiMethods/historyApi';
 import { useModalStore } from '../../../../../../stores/modal';
 import { History } from '../../../../../../typings/api/historyMessage';
 
