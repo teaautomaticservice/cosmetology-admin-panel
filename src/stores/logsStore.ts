@@ -1,4 +1,4 @@
-import { logsListMethods } from '../apiMethods/logsList';
+import { logsApi } from '../apiMethods/logsApi';
 import { Logs } from '../typings/api/logs';
 import { storeFactory } from '../utils/storeFactory';
 
@@ -24,7 +24,7 @@ export const useLogsStore = () => {
 
   const handleResponse = async () => {
     setIsLoading(true);
-    const { data, meta } = await logsListMethods.getLogsList();
+    const { data, meta } = await logsApi.getLogsList();
     setIsLoading(false);
     return {
       data,

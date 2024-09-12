@@ -1,7 +1,7 @@
 import { useForm, SubmitHandler } from 'react-hook-form';
 
 import type { UpdateMessageForm } from "../types";
-import { historyMessagesMethods } from "../../../../../../apiMethods/historyMessages";
+import { historyMessagesMethods } from "../../../../../../apiMethods/historyApi";
 import { useModalStore } from "../../../../../../stores/modal";
 import { useHistoryMessagesStore } from '../../../../../../stores/historyMessages';
 

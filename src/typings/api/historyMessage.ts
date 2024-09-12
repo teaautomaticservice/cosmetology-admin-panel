@@ -1,11 +1,4 @@
-import type { List } from "./common";
-import type { ID } from "../common";
+import { HistoryDto, HistoryPaginatedDto } from './generated';
 
-export interface History {
-  id: ID;
-  date: string;
-  owner: string;
-  message: string;
-}
-
-export type HistoryList = List<History>;
+export type History = HistoryDto;
+export type HistoryPaginated = HistoryPaginatedDto;

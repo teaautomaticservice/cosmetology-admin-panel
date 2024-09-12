@@ -1,4 +1,4 @@
-import type { Event } from "effector";
+import type { Event, EventCallable } from "effector";
 import type { AxiosError } from "axios";
 import { createStore, createEvent, createEffect } from "effector";
 import { useStore, useEvent } from "effector-react";
@@ -38,7 +38,7 @@ export const storeFactory = <State>(initValue: State) => {
     ],
     useCreateEffect,
     createStoreEvent,
-    useEvent: <Payload = State>(event: Event<Payload>) => useEvent(event),
+    useEvent: <Payload = State>(event: EventCallable<Payload>) => useEvent(event),
     useChangeEvent: <Payload = State>(reducer: Reducer<State, Payload>) => useEvent(createStoreEvent(reducer)),
     useNewEvent: (reducer: Reducer<State, State>) => useEvent(createStoreEvent(reducer)),
   };
