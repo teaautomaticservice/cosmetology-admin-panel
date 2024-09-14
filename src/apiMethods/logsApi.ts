@@ -6,8 +6,10 @@ export const logsApi = {
   getLogsList: async (): Promise<LogsList> => {
     const { page, pageSize } = getSearchParams<{ page?: string; pageSize?: string; }>();
     const data = await LogsService.logsControllerGetList({
-      page,
-      pageSize,
+      ...(page && { page: Number(page) }),
+      ...(pageSize && { pageSize: Number(pageSize) }),
+      // page,
+      // pageSize,
     });
     return data;
   }
