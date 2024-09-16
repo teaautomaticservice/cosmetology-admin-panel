@@ -15,8 +15,8 @@ export class LogsService {
         page,
         pageSize,
     }: {
-        page?: string,
-        pageSize?: string,
+        page?: number,
+        pageSize?: number,
     }): CancelablePromise<LogsPaginatedDto> {
         return __request(OpenAPI, {
             method: 'GET',
