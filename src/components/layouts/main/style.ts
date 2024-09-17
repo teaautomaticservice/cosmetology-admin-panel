@@ -1,6 +1,6 @@
 import { CSSProperties } from "react";
 
-import { colors } from '../../../ant/colors';
+import { colors } from '@ant/colors';
 
 export const style: Record<string, CSSProperties> = {
   layout: {

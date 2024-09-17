@@ -1,7 +1,7 @@
-import type { History } from "../typings/api/historyMessage";
-import { storeFactory } from "../utils/storeFactory";
+import type { History } from "@typings/api/historyMessage";
+import { storeFactory } from "@utils/storeFactory";
 
-import { historyMessagesMethods } from "../apiMethods/historyApi";
+import { historyMessagesMethods } from "@apiMethods/historyApi";
 
 const {
   useStore: useHistoryStore,

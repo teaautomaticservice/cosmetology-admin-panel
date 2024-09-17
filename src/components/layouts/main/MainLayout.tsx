@@ -3,8 +3,8 @@ import { useNavigate, useLocation } from "react-router-dom";
 import { MenuClickEventHandler } from 'rc-menu/lib/interface';
 
 import { style } from "./style";
-import { MessageModal } from '../../domain/historyMessages/components/messageModal/MessageModal';
-import { paths } from '../../../router/paths';
+import { paths } from '@router/paths';
+import { MessageModal } from '@components/domain/historyMessages/components/messageModal/MessageModal';
 
 const { Header, Content, Sider } = Layout;
 const { Title } = Typography;

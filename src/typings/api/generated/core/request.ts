@@ -1,4 +1,4 @@
-import { transport } from '../../../../utils/transport';
+import { transport } from '@utils/transport';
 import { ApiRequestOptions } from './ApiRequestOptions';
 import type { OpenAPIConfig } from './OpenAPI';
 import { CancelablePromise } from './CancelablePromise';
