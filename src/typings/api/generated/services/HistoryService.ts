@@ -26,7 +26,7 @@ export class HistoryService {
     public static historyControllerGetItem({
         id,
     }: {
-        id: string,
+        id: number,
     }): CancelablePromise<HistoryDto> {
         return __request(OpenAPI, {
             method: 'GET',

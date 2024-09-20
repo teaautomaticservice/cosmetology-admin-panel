@@ -2,8 +2,8 @@ import { useEffect } from 'react';
 import { PaginationProps } from 'antd';
 import { debounce } from 'lodash';
 
-import { useLogsStore } from '../../../../../../stores/logsStore';
-import { useParams } from '../../../../../../hooks/useParams';
+import { useParams } from '@hooks/useParams';
+import { useLogsStore } from '@stores/logsStore';
 
 export const useTableLogs = () => {
   const { logsList, updateLogsFromApi, isLogsListLoading } = useLogsStore();

@@ -18,7 +18,19 @@
     "resolveJsonModule": true,
     "isolatedModules": true,
     "noEmit": true,
-    "jsx": "preserve"
+    "jsx": "preserve",
+    "baseUrl": "./",
+    "paths": {
+      "@ant/*": ["./src/ant/*"],
+      "@apiMethods/*": ["./src/apiMethods/*"],
+      "@assets/*": ["./src/assets/*"],
+      "@components/*": ["./src/components/*"],
+      "@hooks/*": ["./src/hooks/*"],
+      "@router/*": ["./src/router/*"],
+      "@stores/*": ["./src/stores/*"],
+      "@typings/*": ["./src/typings/*"],
+      "@utils/*": ["./src/utils/*"]
+    }
   },
   "include": [
     "src"
