@@ -1,10 +1,10 @@
 import React from "react";
-import { Space, Table, Button } from 'antd';
+import { History } from '@typings/api/historyMessage';
+import { dateUtils } from '@utils/dateUtils';
+import { Button,Space, Table } from 'antd';
 import type { ColumnsType } from 'antd/es/table';
 
 import { useTableMessages } from "./services/useTableMessages";
-import { dateUtils } from '@utils/dateUtils';
-import { History } from '@typings/api/historyMessage';
 
 export const TableMessages: React.FC = () => {
   const { data, deleteMessage, editMessage, isHistoryLoading } = useTableMessages();

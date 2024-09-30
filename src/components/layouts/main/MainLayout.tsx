@@ -1,15 +1,15 @@
-import { Layout, Space, Menu, MenuProps, Typography } from 'antd';
-import { useNavigate, useLocation } from "react-router-dom";
+import { MessageModal } from '@components/domain/historyMessages/components/messageModal/MessageModal';
+import { paths } from '@router/paths';
+import { Layout, Menu, MenuProps, Space, Typography } from 'antd';
 import { MenuClickEventHandler } from 'rc-menu/lib/interface';
+import { useLocation, useNavigate } from "react-router-dom";
 
 import { style } from "./style";
-import { paths } from '@router/paths';
-import { MessageModal } from '@components/domain/historyMessages/components/messageModal/MessageModal';
 
 const { Header, Content, Sider } = Layout;
 const { Title } = Typography;
 
-type MenuItems =  Required<MenuProps>['items'];
+type MenuItems = Required<MenuProps>['items'];
 
 export const MainLayout: React.FC = ({ children }: React.PropsWithChildren) => {
   const navigate = useNavigate();

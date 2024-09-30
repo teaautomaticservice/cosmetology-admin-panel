@@ -1,7 +1,7 @@
+import type { Logs } from '@typings/api/logs';
 import { Table } from 'antd';
 import { ColumnsType } from 'antd/es/table';
 
-import type { Logs } from '@typings/api/logs';
 import { useTableLogs } from './services/useTableLogs';
 
 export const TableLogs: React.FC = () => {

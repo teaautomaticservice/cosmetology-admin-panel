@@ -1,7 +1,8 @@
 import { transport } from '@utils/transport';
+
 import { ApiRequestOptions } from './ApiRequestOptions';
-import type { OpenAPIConfig } from './OpenAPI';
 import { CancelablePromise } from './CancelablePromise';
+import type { OpenAPIConfig } from './OpenAPI';
 
 export const request = <T>(config: OpenAPIConfig, options: ApiRequestOptions): CancelablePromise<T> => {
   return new CancelablePromise((resolve, reject, onCancel) => {

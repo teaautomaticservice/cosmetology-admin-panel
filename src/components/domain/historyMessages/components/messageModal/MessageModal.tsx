@@ -1,9 +1,9 @@
 import React from "react";
-import { Modal, Input } from 'antd';
+import { dateUtils } from "@utils/dateUtils";
+import { Input,Modal } from 'antd';
 import { Controller } from 'react-hook-form';
 
 import { useMessageModal } from "./services/useMessageModal";
-import { dateUtils } from "@utils/dateUtils";
 
 export const MessageModal: React.FC = () => {
   const { isOpen, close, history, submitForm, formControl, okClick } = useMessageModal();
