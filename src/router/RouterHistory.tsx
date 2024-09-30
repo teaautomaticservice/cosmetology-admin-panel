@@ -1,8 +1,8 @@
 import React from 'react';
-import { BrowserRouter, Routes, Route } from 'react-router-dom';
+import { BrowserRouter, Route, Routes } from 'react-router-dom';
 
-import { routerConfig } from './routerConfig';
 import { addLayout } from './hocs/addLayout';
+import { routerConfig } from './routerConfig';
 
 export const RouterHistory: React.FC = () => {
   const routesEls = routerConfig.map(({ path, Component, Layout }) => (

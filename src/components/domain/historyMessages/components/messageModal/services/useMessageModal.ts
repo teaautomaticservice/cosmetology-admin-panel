@@ -1,9 +1,9 @@
-import { useForm, SubmitHandler } from 'react-hook-form';
+import { historyMessagesMethods } from "@apiMethods/historyApi";
+import { useHistoryMessagesStore } from '@stores/historyMessages';
+import { useModalStore } from "@stores/modal";
+import { SubmitHandler,useForm } from 'react-hook-form';
 
 import type { UpdateMessageForm } from "../types";
-import { historyMessagesMethods } from "@apiMethods/historyApi";
-import { useModalStore } from "@stores/modal";
-import { useHistoryMessagesStore } from '@stores/historyMessages';
 
 export const useMessageModal = () => {
   const { isOpen, close, history } = useModalStore();
