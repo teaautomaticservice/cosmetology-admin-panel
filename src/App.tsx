@@ -1,5 +1,5 @@
 import React from "react";
-import { compose } from "@k88/pipe-compose";
+import compose from '@utils/compose';
 
 import { withAntTheme } from "./ant/theme";
 import { RouterHistory } from './router/RouterHistory';
