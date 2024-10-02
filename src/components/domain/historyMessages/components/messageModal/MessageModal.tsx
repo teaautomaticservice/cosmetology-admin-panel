@@ -1,5 +1,5 @@
 import React from "react";
-import { dateUtils } from "@utils/dateUtils";
+import { dateUtils } from "@shared/utils/dateUtils";
 import { Input,Modal } from 'antd';
 import { Controller } from 'react-hook-form';
 

@@ -1,0 +1,3 @@
+[submodule "src/cosmetology-shared"]
+	path = src/cosmetology-shared
+	url = git@github.com:teaautomaticservice/cosmetology-shared.git

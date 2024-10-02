@@ -1,4 +1,4 @@
-import { transport } from '@utils/transport';
+import { transport } from '@shared/utils/transport';
 
 import { ApiRequestOptions } from './ApiRequestOptions';
 import { CancelablePromise } from './CancelablePromise';
