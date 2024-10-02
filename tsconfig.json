@@ -29,7 +29,8 @@
       "@router/*": ["./src/router/*"],
       "@stores/*": ["./src/stores/*"],
       "@typings/*": ["./src/typings/*"],
-      "@utils/*": ["./src/utils/*"]
+      "@utils/*": ["./src/utils/*"],
+      "@shared/*": ["./src/cosmetology-shared/src/*"]
     }
   },
   "include": [

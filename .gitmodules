@@ -1,0 +1,3 @@
+[submodule "src/cosmetology-shared"]
+	path = src/cosmetology-shared
+	url = https://deploy-token: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@github.com/teaautomaticservice/cosmetology-shared.git

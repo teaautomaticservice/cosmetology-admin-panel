@@ -1,6 +1,6 @@
+import { getSearchParams } from '@shared/utils/getSearchParams';
 import { LogsService } from '@typings/api/generated';
 import { LogsList } from '@typings/api/logs';
-import { getSearchParams } from '@utils/getSearchParams';
 
 export const logsApi = {
   getLogsList: async (): Promise<LogsList> => {

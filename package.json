@@ -3,12 +3,11 @@
   "version": "0.1.0",
   "private": true,
   "scripts": {
-    "start": "craco start",
-    "build": "craco build",
+    "start": "react-app-rewired start",
+    "build": "react-app-rewired build",
     "lint": "eslint \"src/**/*.{ts,tsx}\"",
     "lint:fix": "eslint \"src/**/*.{ts,tsx}\" --fix",
-    "test": "craco test",
-    "eject": "craco eject",
+    "test": "react-app-rewired test",
     "openapi": "openapi -i http://localhost:3000/swagger/json -o src/typings/api/generated --request ./openapi/request.ts --useOptions"
   },
   "eslintConfig": {
@@ -53,17 +52,22 @@
   },
   "devDependencies": {
     "@babel/plugin-proposal-private-property-in-object": "^7.21.11",
-    "@craco/craco": "^7.1.0",
     "@types/lodash": "^4.17.7",
     "eslint-config-react-app": "^7.0.1",
     "eslint-import-resolver-typescript": "^3.6.3",
     "eslint-plugin-import-newlines": "^1.4.0",
     "eslint-plugin-simple-import-sort": "^12.1.1",
+    "install": "^0.13.0",
+    "npm": "^10.8.3",
     "openapi-typescript": "^7.3.3",
     "openapi-typescript-codegen": "^0.29.0",
+    "react-app-rewired": "^2.2.1",
     "react-inject-env": "^2.1.0"
   },
   "overrides": {
     "typescript": "^5.5.4"
-  }
+  },
+  "workspaces": [
+    "src/cosmetology-shared"
+  ]
 }
