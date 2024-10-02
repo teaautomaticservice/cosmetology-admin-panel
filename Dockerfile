@@ -6,6 +6,7 @@ ENV REACT_APP_API_URL=$REACT_APP_API_URL
 COPY . /app
 WORKDIR /app
 RUN npm ci
+RUN git submodule update --init
 RUN npm run build
 
 ENTRYPOINT npx react-inject-env set
