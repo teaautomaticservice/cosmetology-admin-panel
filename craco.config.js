@@ -1,8 +1,8 @@
 const path = require('path');
 
-module.exports = (config, env) => {
-    config.resolve.alias = {
-      ...config.resolve.alias,
+module.exports = {
+  webpack: {
+    alias: {
       "@ant": path.resolve(__dirname, './src/ant'),
       "@apiMethods": path.resolve(__dirname, './src/apiMethods'),
       "@assets": path.resolve(__dirname, './src/assets'),
@@ -12,8 +12,6 @@ module.exports = (config, env) => {
       "@stores": path.resolve(__dirname, './src/stores'),
       "@typings": path.resolve(__dirname, './src/typings'),
       "@utils": path.resolve(__dirname, './src/utils'),
-      "@shared": path.resolve(__dirname, './src/cosmetology-shared/src'),
-    };
-
-    return config;
-}
+    },
+  },
+};

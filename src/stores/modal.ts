@@ -1,5 +1,5 @@
-import { storeFactory } from "@shared/utils/storeFactory";
 import type { History } from "@typings/api/historyMessage";
+import { storeFactory } from "@utils/storeFactory";
 
 interface ModalStore {
   history: History | null;
