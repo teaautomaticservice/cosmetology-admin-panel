@@ -1,5 +1,5 @@
 import React from "react";
-import compose from '@shared/utils/compose';
+import compose from '@utils/compose';
 
 import { withAntTheme } from "./ant/theme";
 import { RouterHistory } from './router/RouterHistory';

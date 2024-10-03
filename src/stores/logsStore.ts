@@ -1,6 +1,6 @@
 import { logsApi } from '@apiMethods/logsApi';
-import { storeFactory } from '@shared/utils/storeFactory';
 import { Logs } from '@typings/api/logs';
+import { storeFactory } from '@utils/storeFactory';
 
 const {
   useStore: useLogsListStore,

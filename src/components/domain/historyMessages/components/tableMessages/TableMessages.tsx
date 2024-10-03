@@ -1,6 +1,6 @@
 import React from "react";
-import { dateUtils } from '@shared/utils/dateUtils';
 import { History } from '@typings/api/historyMessage';
+import { dateUtils } from '@utils/dateUtils';
 import { Button,Space, Table } from 'antd';
 import type { ColumnsType } from 'antd/es/table';
 
