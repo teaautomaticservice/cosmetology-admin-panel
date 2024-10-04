@@ -1,3 +1,4 @@
+import { AuthorizationService } from '@typings/api/generated';
 import type { FormProps } from 'antd';
 import { Button, Checkbox, Form, Input, Typography } from 'antd';
 
@@ -5,13 +6,18 @@ import s from './style.module.css';
 
 const { Text, Link } = Typography;
 
-type FieldType = {
-  username?: string;
-  password?: string;
-  remember?: string;
+type LoginForm = {
+  email: string;
+  password: string;
+  isRemember: boolean;
 };
 
 export const Login: React.FC = () => {
+  const submit = (form: LoginForm) => {
+    console.log(form)
+    AuthorizationService.authorizationControllerLogin({ requestBody: form });
+  };
+
   return (
     <Form
       className={s.root}
@@ -19,20 +25,20 @@ export const Login: React.FC = () => {
       name="login"
       labelCol={{ span: 8 }}
       initialValues={{ remember: true }}
-      onFinish={() => { }}
+      onFinish={submit}
       onFinishFailed={() => { }}
     >
       <Text strong>Login into admin panel</Text>
 
-      <Form.Item<FieldType>
-        label="Username"
-        name="username"
-        rules={[{ required: true, message: 'Please input your username!' }]}
+      <Form.Item<LoginForm>
+        label="Email"
+        name="email"
+        rules={[{ required: true, message: 'Please input your email!' }]}
       >
         <Input />
       </Form.Item>
 
-      <Form.Item<FieldType>
+      <Form.Item<LoginForm>
         label="Password"
         name="password"
         rules={[{ required: true, message: 'Please input your password!' }]}
@@ -40,8 +46,8 @@ export const Login: React.FC = () => {
         <Input.Password />
       </Form.Item>
 
-      <Form.Item<FieldType>
-        name="remember"
+      <Form.Item<LoginForm>
+        name="isRemember"
         valuePropName="checked"
       >
         <Checkbox>Remember me</Checkbox>
