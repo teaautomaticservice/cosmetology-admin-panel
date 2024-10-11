@@ -1,4 +1,4 @@
-import { colors } from './colors';
+import { colors } from '../ant/colors';
 
 export const cssVars = {
   '--accent': colors.red7,

@@ -13,9 +13,10 @@ type LoginForm = {
 };
 
 export const Login: React.FC = () => {
-  const submit = (form: LoginForm) => {
-    console.log(form)
-    AuthorizationService.authorizationControllerLogin({ requestBody: form });
+  const submit = async (form: LoginForm) => {
+    console.log('form', form)
+    const currentUser = await AuthorizationService.authorizationControllerLogin({ requestBody: form });
+    console.log('currentUser', currentUser)
   };
 
   return (
@@ -24,7 +25,7 @@ export const Login: React.FC = () => {
       layout="vertical"
       name="login"
       labelCol={{ span: 8 }}
-      initialValues={{ remember: true }}
+      initialValues={{ isRemember: true }}
       onFinish={submit}
       onFinishFailed={() => { }}
     >

@@ -12,6 +12,7 @@ const logs: RouterPage[] = [
     path: paths.logs,
     Component: Logs,
     Layout: MainLayout,
+    roles: ['superAdministrator'],
   }
 ];
 
@@ -20,6 +21,7 @@ const main: RouterPage[] = [
     path: paths.main,
     Component: HistoryMessage,
     Layout: MainLayout,
+    roles: ['administrator'],
   }
 ];
 
@@ -28,6 +30,7 @@ const authorization: RouterPage[] = [
     path: paths.login,
     Component: Login,
     Layout: UnauthorizedLayout,
+    roles: ['unauthorized'],
   }
 ]
 

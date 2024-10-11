@@ -7,6 +7,8 @@ export { CancelablePromise, CancelError } from './core/CancelablePromise';
 export { OpenAPI } from './core/OpenAPI';
 export type { OpenAPIConfig } from './core/OpenAPI';
 
+export type { AppConfigDto } from './models/AppConfigDto';
+export { CurrentUserDto } from './models/CurrentUserDto';
 export type { HistoryDto } from './models/HistoryDto';
 export type { HistoryPaginatedDto } from './models/HistoryPaginatedDto';
 export type { LoginFormDto } from './models/LoginFormDto';
@@ -15,6 +17,7 @@ export type { LogsPaginatedDto } from './models/LogsPaginatedDto';
 export type { PaginationMetaDto } from './models/PaginationMetaDto';
 export type { UpdateHistoryDto } from './models/UpdateHistoryDto';
 
+export { AppConfigService } from './services/AppConfigService';
 export { AuthorizationService } from './services/AuthorizationService';
 export { HistoryService } from './services/HistoryService';
 export { LogsService } from './services/LogsService';

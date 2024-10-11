@@ -9,7 +9,7 @@
     "lint:fix": "eslint \"src/**/*.{ts,tsx}\" --fix",
     "test": "craco test",
     "eject": "craco eject",
-    "openapi": "openapi -i http://localhost:3000/swagger/json -o src/typings/api/generated --request ./openapi/request.ts --useOptions"
+    "openapi": "openapi -i http://localhost:3000/swagger/json -o src/typings/api/generated --request ./openapi/request.ts -D modelPropertyNaming=original --useOptions"
   },
   "eslintConfig": {
     "extends": [
