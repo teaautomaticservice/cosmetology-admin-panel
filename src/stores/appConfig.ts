@@ -11,15 +11,14 @@ const {
 const { useStore: useIsLoadingStore } = storeFactory<boolean>(true);
 
 export const useAppConfigStore = () => {
-  const [appConfig, setAppConfig] = useStore();
+  const [appConfig] = useStore();
 
   const [isLoading, setIsLoading] = useIsLoadingStore();
 
   const handleResponse = async () => {
     setIsLoading(true);
     try {
-      const data = await appConfigMethods.getConfig();
-      setAppConfig(data);
+      return appConfigMethods.getConfig();
     } finally {
       setIsLoading(false);
     }
