@@ -2,6 +2,7 @@ import { colors } from '../ant/colors';
 
 export const cssVars = {
   '--accent': colors.red7,
+  '--light-accent': colors.red3,
 } as React.CSSProperties;
 
 

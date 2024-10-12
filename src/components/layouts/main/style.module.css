@@ -1,0 +1,25 @@
+.root {
+  min-height: 100vh;
+
+  .header {
+    display: flex;
+    align-items: center;
+    padding: 12px 24px;
+  }
+
+  .title {
+    margin: 0;
+  }
+
+  .leftSider {
+    background-color: var(--light-accent);
+  }
+
+  .content {
+    margin: 16px;
+  }
+
+  .wrapper {
+    width: 100%;
+  }
+}

@@ -1,4 +1,5 @@
 import { Typography } from 'antd';
+import { APP_NAME, NAME_DESCRIPTION } from 'src/constants/app';
 
 import s from './style.module.css';
 
@@ -8,8 +9,8 @@ export const UnauthorizedLayout: React.FC = ({ children }: React.PropsWithChildr
   return (
     <div className={s.root}>
       <div>
-        <Title className={s.title}>TAS: Cosmetology. Admin panel</Title>
-        <Text className={s.titleDescription}>Tea Automatic Service</Text>
+        <Title className={s.title}>{APP_NAME}</Title>
+        <Text className={s.titleDescription}>{NAME_DESCRIPTION}</Text>
       </div>
 
       <div className={s.wrapper}>{children}</div>
