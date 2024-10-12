@@ -1,3 +1,4 @@
+import { authorizationMethods } from '@apiMethods/authorizationApi';
 import { AuthorizationService } from '@typings/api/generated';
 import type { FormProps } from 'antd';
 import { Button, Checkbox, Form, Input, Typography } from 'antd';
@@ -14,9 +15,8 @@ type LoginForm = {
 
 export const Login: React.FC = () => {
   const submit = async (form: LoginForm) => {
-    console.log('form', form)
-    const currentUser = await AuthorizationService.authorizationControllerLogin({ requestBody: form });
-    console.log('currentUser', currentUser)
+    await authorizationMethods.login(form);
+    window.location.reload();
   };
 
   return (

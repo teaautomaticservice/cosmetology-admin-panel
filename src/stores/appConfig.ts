@@ -1,4 +1,4 @@
-import { appConfigMethods } from '@apiMethods/appConfig';
+import { appConfigMethods } from '@apiMethods/appConfigApi';
 import { AppConfig } from '@typings/api/appConfig';
 import { storeFactory } from '@utils/storeFactory';
 

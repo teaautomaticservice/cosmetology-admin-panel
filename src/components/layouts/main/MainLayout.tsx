@@ -5,6 +5,8 @@ import { MenuClickEventHandler } from 'rc-menu/lib/interface';
 import { useLocation, useNavigate } from "react-router-dom";
 import { APP_NAME } from 'src/constants/app';
 
+import { UserMenu } from './userMenu/userMenu';
+
 import s from './style.module.css'
 
 const { Header, Content, Sider } = Layout;
@@ -12,36 +14,36 @@ const { Title } = Typography;
 
 type MenuItems = Required<MenuProps>['items'];
 
+const messageMenu: MenuItems[number] = {
+  label: 'Messages',
+  type: 'group',
+  children: [
+    {
+      label: 'Messages',
+      key: paths.main,
+    }
+  ]
+};
+
+const technicalMenu: MenuItems[number] = {
+  label: 'Technical',
+  type: 'group',
+  children: [
+    {
+      label: 'Logs',
+      key: paths.logs,
+    }
+  ]
+};
+
+const menuItems: MenuItems = [
+  messageMenu,
+  technicalMenu,
+]
+
 export const MainLayout: React.FC = ({ children }: React.PropsWithChildren) => {
   const navigate = useNavigate();
   const { pathname } = useLocation();
-
-  const messageMenu: MenuItems[number] = {
-    label: 'Messages',
-    type: 'group',
-    children: [
-      {
-        label: 'Messages',
-        key: paths.main,
-      }
-    ]
-  };
-
-  const technicalMenu: MenuItems[number] = {
-    label: 'Technical',
-    type: 'group',
-    children: [
-      {
-        label: 'Logs',
-        key: paths.logs,
-      }
-    ]
-  };
-
-  const menuItems: MenuItems = [
-    messageMenu,
-    technicalMenu,
-  ]
 
   const onClick: MenuClickEventHandler = ({ key }) => {
     if (typeof key === 'string') {
@@ -53,6 +55,7 @@ export const MainLayout: React.FC = ({ children }: React.PropsWithChildren) => {
     <Layout className={s.root}>
       <Header className={s.header}>
         <Title className={s.title} level={3}>{APP_NAME}</Title>
+        <UserMenu />
       </Header>
       <Layout>
         <Sider className={s.leftSider}>

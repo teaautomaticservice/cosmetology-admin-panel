@@ -18,8 +18,8 @@ export namespace CurrentUserDto {
         DEACTIVATED = 'deactivated',
     }
     export enum type {
-        OPERATOR = 'operator',
         CLIENT = 'client',
+        OPERATOR = 'operator',
         ADMINISTRATOR = 'administrator',
         SUPER_ADMINISTRATOR = 'superAdministrator',
     }

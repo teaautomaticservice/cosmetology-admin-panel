@@ -27,4 +27,14 @@ export class AuthorizationService {
             mediaType: 'application/json',
         });
     }
+    /**
+     * @returns any User success log out
+     * @throws ApiError
+     */
+    public static authorizationControllerLogOut(): CancelablePromise<any> {
+        return __request(OpenAPI, {
+            method: 'GET',
+            url: '/authorization/logout',
+        });
+    }
 }
