@@ -1,23 +1,15 @@
-import { authorizationMethods } from '@apiMethods/authorizationApi';
-import { AuthorizationService } from '@typings/api/generated';
 import type { FormProps } from 'antd';
 import { Button, Checkbox, Form, Input, Typography } from 'antd';
+
+import { useLoginServices } from './loginServices';
+import { LoginForm } from './type';
 
 import s from './style.module.css';
 
 const { Text, Link } = Typography;
 
-type LoginForm = {
-  email: string;
-  password: string;
-  isRemember: boolean;
-};
-
 export const Login: React.FC = () => {
-  const submit = async (form: LoginForm) => {
-    await authorizationMethods.login(form);
-    window.location.reload();
-  };
+  const { isAuthLoading, submit } = useLoginServices();
 
   return (
     <Form
@@ -25,9 +17,9 @@ export const Login: React.FC = () => {
       layout="vertical"
       name="login"
       labelCol={{ span: 8 }}
-      initialValues={{ isRemember: true }}
+      autoComplete="off"
       onFinish={submit}
-      onFinishFailed={() => { }}
+      disabled={isAuthLoading}
     >
       <Text strong>Login into admin panel</Text>
 
@@ -55,7 +47,7 @@ export const Login: React.FC = () => {
       </Form.Item>
 
       <Form.Item>
-        <Button type="primary" htmlType="submit" className={s.button}>
+        <Button type="primary" htmlType="submit" className={s.button} loading={isAuthLoading}>
           Submit
         </Button>
       </Form.Item>

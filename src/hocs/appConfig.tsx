@@ -7,7 +7,7 @@ const { Title } = Typography;
 export const withAppConfig = (Component: React.FC): React.FC => {
   return (props: any) => {
     const {
-      isAppConfigLoading,
+      isAppConfigLoaded,
       getAppConfigFromApi,
     } = useAppConfigStore()
 
@@ -15,10 +15,10 @@ export const withAppConfig = (Component: React.FC): React.FC => {
       getAppConfigFromApi();
     }, []);
 
-    if (isAppConfigLoading) {
-      return (<Title>App is loading, please wait</Title>)
+    if (isAppConfigLoaded) {
+      return (<Component {...props} />)
     }
 
-    return (<Component {...props} />)
+    return (<Title>App is loading, please wait</Title>)
   };
 };

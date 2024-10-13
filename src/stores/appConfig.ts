@@ -1,34 +1,66 @@
 import { appConfigMethods } from '@apiMethods/appConfigApi';
+import { authorizationMethods } from '@apiMethods/authorizationApi';
 import { AppConfig } from '@typings/api/appConfig';
+import { LoginFormDto } from '@typings/api/generated';
 import { storeFactory } from '@utils/storeFactory';
 
 const {
   useStore,
-  useCreateEffect,
 } = storeFactory<AppConfig>({
   currentUser: null,
 });
-const { useStore: useIsLoadingStore } = storeFactory<boolean>(true);
+const { useStore: useIsLoadingStore } = storeFactory<boolean>(false);
+const { useStore: useIsAuthLoadingStore } = storeFactory<boolean>(false);
 
 export const useAppConfigStore = () => {
-  const [appConfig] = useStore();
+  const [appConfigStore, setAppConfig] = useStore();
+  const [isAppConfigLoaded, setIsLoading] = useIsLoadingStore();
+  const [isAuthLoading, setIsAuthLoading] = useIsAuthLoadingStore();
 
-  const [isLoading, setIsLoading] = useIsLoadingStore();
+  const updateAppConfig = (props: Partial<AppConfig>) => setAppConfig({
+    ...appConfigStore,
+    ...props,
+  });
 
-  const handleResponse = async () => {
-    setIsLoading(true);
+  const getAppConfigFromApi = async () => {
     try {
-      return appConfigMethods.getConfig();
-    } finally {
-      setIsLoading(false);
+      if (isAppConfigLoaded) {
+        setIsLoading(false);
+      }
+      const resp = await appConfigMethods.getConfig();
+      updateAppConfig(resp);
+      setIsLoading(true);
+    } catch {
+      // noop
     }
-  }
+  };
 
-  const getAppConfigFromApi = useCreateEffect<void>(handleResponse);
+  const logOut = async () => {
+    setIsAuthLoading(true);
+    try {
+      await authorizationMethods.logOut();
+      updateAppConfig({ currentUser: null });
+    } finally {
+      setIsAuthLoading(false);
+    }
+  };
+
+  const login = async (loginForm: LoginFormDto) => {
+    setIsAuthLoading(true);
+    try {
+      const currentUser = await authorizationMethods.login(loginForm);
+      updateAppConfig({ currentUser })
+    } finally {
+      setIsAuthLoading(false);
+    }
+  };
 
   return {
-    appConfigStore: appConfig,
-    isAppConfigLoading: isLoading,
+    appConfigStore,
+    isAppConfigLoaded,
+    isAuthLoading,
+    logOut,
+    login,
     getAppConfigFromApi,
   }
 }

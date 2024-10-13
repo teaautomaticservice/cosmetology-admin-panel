@@ -1,18 +1,16 @@
-import { authorizationMethods } from '@apiMethods/authorizationApi';
 import { useAppConfigStore } from '@stores/appConfig';
 
 export const useUserMenuService = () => {
-  const { appConfigStore } = useAppConfigStore();
+  const { appConfigStore, logOut } = useAppConfigStore();
 
   const { currentUser } = appConfigStore;
 
-  const logOut = async () => {
-    await authorizationMethods.logOut();
-    window.location.reload();
+  const logOutHandler = async () => {
+    await logOut();
   };
 
   return {
     userDisplayName: currentUser?.displayName,
-    logOut,
+    logOut: logOutHandler,
   };
 }

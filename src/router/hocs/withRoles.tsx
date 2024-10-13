@@ -1,27 +1,19 @@
 import { useEffect } from 'react'
 import { paths } from '@router/paths';
 import { routerConfig } from '@router/routerConfig'
-import { RouterPage, RouterRole } from '@router/types';
 import { useAppConfigStore } from '@stores/appConfig';
 import { UserTypeEnum } from '@typings/api/user';
 import { useLocation, useNavigate } from 'react-router-dom';
 
-const redirectUrls: Record<RouterRole, string> = {
-  unauthorized: paths.login,
-  superAdministrator: paths.logs,
-  administrator: paths.main,
-  operator: paths.main,
-  client: paths.main,
-}
-
-export const withRoutes = (Component: React.FC, Layout?: React.FC<React.PropsWithChildren>): React.FC => () => {
+export const withRoutes = (Component: React.FC): React.FC => () => {
   const { pathname } = useLocation();
-  const { appConfigStore } = useAppConfigStore();
+  const { appConfigStore, isAppConfigLoaded } = useAppConfigStore();
   const navigate = useNavigate();
 
-  const { currentUser } = appConfigStore;
+  const checkRedirect = () => {
+    const currentConfig = routerConfig.find(({ path }) => path === pathname);
+    const { currentUser } = appConfigStore;
 
-  const checkRedirect = (currentConfig: RouterPage | undefined) => {
     if (currentConfig?.roles == null) {
       return;
     }
@@ -34,7 +26,7 @@ export const withRoutes = (Component: React.FC, Layout?: React.FC<React.PropsWit
     }
 
     if (currentUser == null) {
-      navigate(redirectUrls.unauthorized, { replace: true });
+      navigate(paths.login, { replace: true });
       return;
     }
 
@@ -56,9 +48,10 @@ export const withRoutes = (Component: React.FC, Layout?: React.FC<React.PropsWit
   }
 
   useEffect(() => {
-    const currentConfig = routerConfig.find(({ path }) => path === pathname)
-    checkRedirect(currentConfig)
-  }, [pathname]);
+    if (isAppConfigLoaded) {
+      checkRedirect();
+    }
+  }, [pathname, appConfigStore.currentUser, isAppConfigLoaded]);
 
   return <Component />
 }

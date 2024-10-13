@@ -4,13 +4,12 @@ import { storeFactory } from "@utils/storeFactory";
 
 const {
   useStore: useHistoryStore,
-  useCreateEffect: useHistoryCreateEffect,
+  useAsyncMethod: useHistoryCreateEffect,
 } = storeFactory<History[]>([]);
 const { useStore: useIsLoadingStore } = storeFactory<boolean>(false);
 
 export const useHistoryMessagesStore = () => {
   const [historyMessages, setNewHistory] = useHistoryStore();
-
   const [isHistoryLoading, setIsLoading] = useIsLoadingStore();
 
   const handleResponse = async () => {
