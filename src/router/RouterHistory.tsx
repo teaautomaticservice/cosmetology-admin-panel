@@ -3,12 +3,12 @@ import compose from '@utils/compose';
 import { BrowserRouter, Route, Routes } from 'react-router-dom';
 
 import { withLayout } from './hocs/withLayout';
-import { withRoutes } from './hocs/withRoles';
+import { withRoles } from './hocs/withRoles';
 import { routerConfig } from './routerConfig';
 
 export const RouterHistory: React.FC = () => {
   const composedComponent = compose(
-    withRoutes,
+    withRoles,
     withLayout,
   );
 

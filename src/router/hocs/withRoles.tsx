@@ -4,35 +4,39 @@ import { useAppConfigStore } from '@stores/appConfig';
 import { UserTypeEnum } from '@typings/api/user';
 import { Navigate,useLocation } from 'react-router-dom';
 
-export const withRoutes = (Component: React.FC): React.FC => () => {
+export const withRoles = (Component: React.FC): React.FC => () => {
   const { pathname } = useLocation();
   const { appConfigStore } = useAppConfigStore();
   const currentConfig = routerConfig.find(({ path }) => path === pathname);
-  
-  if (currentConfig?.roles == null) {
+
+  if (!currentConfig?.roles) {
     return <Component />
   }
 
   const { currentUser } = appConfigStore;
   const { roles } = currentConfig;
 
-  if (roles.includes('unauthorized') && currentUser != null) {
+  const isUnauthorizedRoute = roles.includes('unauthorized');
+
+  if (isUnauthorizedRoute && currentUser) {
     return <Navigate to={paths.main} replace />
   }
 
-  if (!roles.includes('unauthorized') && currentUser == null) {
+  if (!isUnauthorizedRoute && !currentUser) {
     return <Navigate to={paths.login} replace />
   }
 
-  if (currentUser == null) {
+  if (!currentUser) {
     return <Component />
   }
 
-  if ([UserTypeEnum.OPERATOR, UserTypeEnum.CLIENT].includes(currentUser.type) && [
+  const allowedRoles = [
     UserTypeEnum.SUPER_ADMINISTRATOR,
     UserTypeEnum.ADMINISTRATOR,
-    UserTypeEnum.OPERATOR,
-  ].some((roleChecked) => roles.includes(roleChecked))) {
+  ];
+
+  if ([UserTypeEnum.OPERATOR, UserTypeEnum.CLIENT].includes(currentUser.type) &&
+    allowedRoles.some((roleChecked) => roles.includes(roleChecked))) {
     return <Navigate to={paths.login} replace />
   }
 
