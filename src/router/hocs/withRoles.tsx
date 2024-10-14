@@ -2,7 +2,7 @@ import { paths } from '@router/paths';
 import { routerConfig } from '@router/routerConfig'
 import { useAppConfigStore } from '@stores/appConfig';
 import { UserTypeEnum } from '@typings/api/user';
-import { useLocation, Navigate } from 'react-router-dom';
+import { Navigate,useLocation } from 'react-router-dom';
 
 export const withRoutes = (Component: React.FC): React.FC => () => {
   const { pathname } = useLocation();
