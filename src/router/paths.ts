@@ -4,6 +4,6 @@ export const paths = {
 
   logs: '/logs',
 
-  // public
+  // unauthorized
   login: '/login',
 };
