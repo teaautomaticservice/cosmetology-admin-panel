@@ -36,10 +36,10 @@ export const useAppConfigStore = () => {
   };
 
   const logOut = async () => {
+    updateAppConfig({ currentUser: null });
     setIsAuthLoading(true);
     try {
       await authorizationMethods.logOut();
-      updateAppConfig({ currentUser: null });
     } finally {
       setIsAuthLoading(false);
     }

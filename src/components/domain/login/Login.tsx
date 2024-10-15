@@ -1,4 +1,3 @@
-import type { FormProps } from 'antd';
 import { Button, Checkbox, Form, Input, Typography } from 'antd';
 
 import { useLoginServices } from './loginServices';
@@ -6,10 +5,13 @@ import { LoginForm } from './type';
 
 import s from './style.module.css';
 
-const { Text, Link } = Typography;
+const { Text } = Typography;
 
 export const Login: React.FC = () => {
   const { isAuthLoading, submit } = useLoginServices();
+  const [form] = Form.useForm<LoginForm>();
+
+  form.setFieldsValue({ isRemember: false });
 
   return (
     <Form
@@ -20,6 +22,7 @@ export const Login: React.FC = () => {
       autoComplete="off"
       onFinish={submit}
       disabled={isAuthLoading}
+      form={form}
     >
       <Text strong>Login into admin panel</Text>
 
