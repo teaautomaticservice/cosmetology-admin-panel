@@ -18,7 +18,7 @@ export const storeFactory = <State>(initValue: State) => {
     return event;
   };
 
-  const useCreateEffect = <Params>(handler: Function) => {
+  const useAsyncMethod = <Params>(handler: Function) => {
     const effect = createEffect<Params, State, AxiosError>(handler);
     subscribeTriggerOnStore(effect.doneData, (_, payload) => payload);
     return useUnit(effect);
@@ -28,7 +28,7 @@ export const storeFactory = <State>(initValue: State) => {
 
   return {
     useStore: () => useUnit([$currentStore, changeEvent]),
-    useCreateEffect,
+    useAsyncMethod,
     createStoreEvent,
     useEvent: <Payload = State>(event: EventCallable<Payload>) => useUnit(event),
     useChangeEvent: <Payload = State>(reducer: Reducer<State, Payload>) => useUnit(createStoreEvent(reducer)),

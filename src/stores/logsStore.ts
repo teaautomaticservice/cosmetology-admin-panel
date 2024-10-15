@@ -4,7 +4,7 @@ import { storeFactory } from '@utils/storeFactory';
 
 const {
   useStore: useLogsListStore,
-  useCreateEffect: useLogsListCreateEffect,
+  useAsyncMethod: useLogsListCreateEffect,
 } = storeFactory<{
   data: Logs[],
   count: number,
