@@ -1,3 +1,4 @@
+const { readFileSync } = require('fs');
 const path = require('path');
 
 module.exports = {
@@ -13,5 +14,12 @@ module.exports = {
       "@typings": path.resolve(__dirname, './src/typings'),
       "@utils": path.resolve(__dirname, './src/utils'),
     },
+  },
+  devServer: (devServerConfig) => {
+    devServerConfig.https = {
+      key: readFileSync(path.resolve(__dirname, './https/localhost.key')),
+      cert: readFileSync(path.resolve(__dirname, './https/localhost.crt')),
+    };
+    return devServerConfig;
   },
 };
