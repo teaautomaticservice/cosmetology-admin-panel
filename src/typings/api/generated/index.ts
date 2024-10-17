@@ -21,3 +21,4 @@ export { AppConfigService } from './services/AppConfigService';
 export { AuthorizationService } from './services/AuthorizationService';
 export { HistoryService } from './services/HistoryService';
 export { LogsService } from './services/LogsService';
+export { UsersService } from './services/UsersService';

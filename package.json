@@ -9,7 +9,7 @@
     "lint:fix": "eslint \"src/**/*.{ts,tsx}\" --fix",
     "test": "craco test",
     "eject": "craco eject",
-    "openapi": "openapi -i http://localhost:3000/swagger/json -o src/typings/api/generated --request ./openapi/request.ts --useOptions"
+    "openapi": "cross-env NODE_TLS_REJECT_UNAUTHORIZED=0 openapi -i https://localhost:3000/swagger/json -o src/typings/api/generated --request ./openapi/request.ts --useOptions"
   },
   "eslintConfig": {
     "extends": [
@@ -56,6 +56,7 @@
     "@babel/plugin-proposal-private-property-in-object": "^7.21.11",
     "@craco/craco": "^7.1.0",
     "@types/lodash": "^4.17.7",
+    "cross-env": "^7.0.3",
     "eslint-config-react-app": "^7.0.1",
     "eslint-import-resolver-typescript": "^3.6.3",
     "eslint-plugin-import-newlines": "^1.4.0",

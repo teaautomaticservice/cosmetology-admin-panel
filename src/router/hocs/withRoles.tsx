@@ -1,7 +1,7 @@
 import { paths } from '@router/paths';
 import { routerConfig } from '@router/routerConfig'
 import { useAppConfigStore } from '@stores/appConfig';
-import { UserTypeEnum } from '@typings/api/user';
+import { UserTypeEnum } from '@typings/api/users';
 import { Navigate,useLocation } from 'react-router-dom';
 
 export const withRoles = (Component: React.FC): React.FC => () => {

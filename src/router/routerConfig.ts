@@ -1,6 +1,7 @@
 import { HistoryMessage } from '@components/domain/historyMessages/HistoryMessage';
 import { Login } from '@components/domain/login/Login';
 import { Logs } from '@components/domain/logs/Logs';
+import { Users } from '@components/domain/users/Users';
 import { MainLayout } from '@components/layouts/main/MainLayout';
 import { UnauthorizedLayout } from '@components/layouts/unauthorized/UnauthorizedLayout';
 import { paths } from '@router/paths';
@@ -25,6 +26,15 @@ const main: RouterPage[] = [
   }
 ];
 
+const users: RouterPage[] = [
+  {
+    path: paths.users,
+    Component: Users,
+    Layout: MainLayout,
+    roles: ['administrator'], 
+  }
+];
+
 const authorization: RouterPage[] = [
   {
     path: paths.login,
@@ -35,7 +45,8 @@ const authorization: RouterPage[] = [
 ]
 
 export const routerConfig: RouterPage[] = [
-  ...logs,
   ...main,
+  ...users,
+  ...logs,
   ...authorization,
 ];
