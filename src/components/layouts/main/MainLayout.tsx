@@ -1,6 +1,8 @@
+import { useEffect, useState } from 'react';
 import { MessageModal } from '@components/domain/historyMessages/components/messageModal/MessageModal';
 import { paths } from '@router/paths';
-import { Layout, Menu, MenuProps, Space, Typography } from 'antd';
+import { Layout, Menu, Space, Typography } from 'antd';
+import { MenuItemGroupType, MenuItemType } from 'antd/es/menu/interface';
 import { MenuClickEventHandler } from 'rc-menu/lib/interface';
 import { useLocation, useNavigate } from "react-router-dom";
 import { APP_NAME } from 'src/constants/app';
@@ -12,9 +14,7 @@ import s from './style.module.css'
 const { Header, Content, Sider } = Layout;
 const { Title } = Typography;
 
-type MenuItems = Required<MenuProps>['items'];
-
-const messageMenu: MenuItems[number] = {
+const messageMenu: MenuItemGroupType<MenuItemType> = {
   label: 'Messages',
   type: 'group',
   children: [
@@ -25,31 +25,60 @@ const messageMenu: MenuItems[number] = {
   ]
 };
 
-const technicalMenu: MenuItems[number] = {
+const usersMenu: MenuItemGroupType<MenuItemType> = {
+  label: 'Users',
+  type: 'group',
+  children: [
+    {
+      label: 'Users',
+      key: paths.users,
+    }
+  ]
+}
+
+const technicalMenu: MenuItemGroupType<MenuItemType> = {
   label: 'Technical',
   type: 'group',
   children: [
     {
       label: 'Logs',
       key: paths.logs,
-    }
+    },
   ]
 };
 
-const menuItems: MenuItems = [
+const menuItems: (MenuItemType | MenuItemGroupType<MenuItemType>)[] = [
   messageMenu,
+  usersMenu,
   technicalMenu,
-]
+];
+
+const findCurrentMenuItems = (key: string): MenuItemType | null => {
+  const selectedItem = menuItems
+    .flatMap((item) => 'children' in item ? item.children : item)
+    .find(child => child && child.key === key);
+
+  return selectedItem as MenuItemType | null;
+};
 
 export const MainLayout: React.FC = ({ children }: React.PropsWithChildren) => {
   const navigate = useNavigate();
   const { pathname } = useLocation();
+  const [title, setTitle] = useState('')
 
   const onClick: MenuClickEventHandler = ({ key }) => {
     if (typeof key === 'string') {
       navigate(key)
     }
   }
+
+  useEffect(() => {
+    const selectedItem = findCurrentMenuItems(pathname);
+
+    if (selectedItem?.label) {
+      setTitle(selectedItem.label.toString());
+    }
+  }, [pathname])
 
   return (
     <Layout className={s.root}>
@@ -68,6 +97,7 @@ export const MainLayout: React.FC = ({ children }: React.PropsWithChildren) => {
         </Sider>
 
         <Content className={s.content}>
+          <Title level={2}>{title}</Title>
           <Space direction="vertical" className={s.wrapper}>
             {children}
           </Space>

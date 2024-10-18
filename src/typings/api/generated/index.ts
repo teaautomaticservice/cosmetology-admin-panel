@@ -16,8 +16,11 @@ export type { LogsDto } from './models/LogsDto';
 export type { LogsPaginatedDto } from './models/LogsPaginatedDto';
 export type { PaginationMetaDto } from './models/PaginationMetaDto';
 export type { UpdateHistoryDto } from './models/UpdateHistoryDto';
+export { UsersDto } from './models/UsersDto';
+export type { UsersPaginatedDto } from './models/UsersPaginatedDto';
 
 export { AppConfigService } from './services/AppConfigService';
 export { AuthorizationService } from './services/AuthorizationService';
 export { HistoryService } from './services/HistoryService';
 export { LogsService } from './services/LogsService';
+export { UsersService } from './services/UsersService';

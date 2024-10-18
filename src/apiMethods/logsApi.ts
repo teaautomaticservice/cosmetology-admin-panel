@@ -8,8 +8,6 @@ export const logsApi = {
     const data = await LogsService.logsControllerGetList({
       ...(page && { page: Number(page) }),
       ...(pageSize && { pageSize: Number(pageSize) }),
-      // page,
-      // pageSize,
     });
     return data;
   }

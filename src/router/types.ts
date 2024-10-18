@@ -1,5 +1,5 @@
 import { FC } from 'react';
-import { type UserType } from '@typings/api/user';
+import { type UserType } from '@typings/api/users';
 
 export type RouterRole = UserType | 'unauthorized';
 
