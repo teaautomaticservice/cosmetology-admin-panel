@@ -1,13 +1,9 @@
-import { useEffect } from 'react';
-import { useUsersStore } from '@stores/users'
+import { TableUsers } from './components/tableUsers/TableUsers'
 
 export const Users: React.FC = () => {
-  const { updateUsersFromApi } = useUsersStore();
-
-  useEffect(() => {
-    updateUsersFromApi()
-  }, [])
   return (
-    <h1>Users</h1>
-  )
-}
+    <div>
+      <TableUsers />
+    </div>
+  );
+};

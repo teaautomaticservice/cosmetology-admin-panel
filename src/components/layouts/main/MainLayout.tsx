@@ -55,7 +55,7 @@ const menuItems: (MenuItemType | MenuItemGroupType<MenuItemType>)[] = [
 
 const findCurrentMenuItems = (key: string): MenuItemType | null => {
   const selectedItem = menuItems
-    .flatMap((item) => 'children' in item && item.children || item)
+    .flatMap((item) => 'children' in item ? item.children : item)
     .find(child => child && child.key === key);
 
   return selectedItem as MenuItemType | null;

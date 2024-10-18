@@ -22,9 +22,13 @@ export const useUsersStore = () => {
   const [isUsersListLoading, setIsLoading] = useIsLoadingStore();
   
   const updateUsersFromApi = useUsersListAsyncMethod<void>(async () => {
-    const resp = usersApi.getUsersList();
-    console.log(resp);
-    return { data: [], count: 0 };
+    setIsLoading(true);
+    try {
+      const { data, meta } = await usersApi.getUsersList();
+      return { data, count: meta.count };
+    } finally {
+      setIsLoading(false);
+    }
   })
 
   return {
