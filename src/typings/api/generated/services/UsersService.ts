@@ -2,6 +2,8 @@
 /* istanbul ignore file */
 /* tslint:disable */
 /* eslint-disable */
+import type { CreateUserDto } from '../models/CreateUserDto';
+import type { UsersDto } from '../models/UsersDto';
 import type { UsersPaginatedDto } from '../models/UsersPaginatedDto';
 import type { CancelablePromise } from '../core/CancelablePromise';
 import { OpenAPI } from '../core/OpenAPI';
@@ -25,6 +27,42 @@ export class UsersService {
                 'page': page,
                 'pageSize': pageSize,
             },
+        });
+    }
+    /**
+     * @returns UsersDto User by ID successful has been got
+     * @throws ApiError
+     */
+    public static usersControllerGetUserById({
+        id,
+    }: {
+        id: number,
+    }): CancelablePromise<UsersDto> {
+        return __request(OpenAPI, {
+            method: 'GET',
+            url: '/users/{id}',
+            path: {
+                'id': id,
+            },
+        });
+    }
+    /**
+     * @returns UsersDto User was created
+     * @throws ApiError
+     */
+    public static usersControllerCreateUser({
+        requestBody,
+    }: {
+        /**
+         * Create user
+         */
+        requestBody: CreateUserDto,
+    }): CancelablePromise<UsersDto> {
+        return __request(OpenAPI, {
+            method: 'POST',
+            url: '/users/create',
+            body: requestBody,
+            mediaType: 'application/json',
         });
     }
 }
