@@ -7,6 +7,7 @@ import { UnauthorizedLayout } from '@components/layouts/unauthorized/Unauthorize
 import { paths } from '@router/paths';
 
 import { RouterPage } from './types';
+import { UserDetail } from '@components/domain/users/detail/UserDetail';
 
 const logs: RouterPage[] = [
   {
@@ -32,7 +33,13 @@ const users: RouterPage[] = [
     Component: Users,
     Layout: MainLayout,
     roles: ['administrator'], 
-  }
+  },
+  {
+    path: paths.userDetail(),
+    Component: UserDetail,
+    Layout: MainLayout,
+    roles: ['administrator'],
+  },
 ];
 
 const authorization: RouterPage[] = [

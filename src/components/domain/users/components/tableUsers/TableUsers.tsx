@@ -1,8 +1,9 @@
 import { Users } from '@typings/api/users';
-import { Table } from 'antd';
+import { Button, Space, Table } from 'antd';
 import { ColumnsType } from 'antd/es/table';
 
 import { useTableUsers } from './useTableUsers';
+import { paths } from '@router/paths';
 
 export const TableUsers: React.FC = () => {
   const { isUsersListLoading, params, updatePaginationParams, usersList, } = useTableUsers();
@@ -36,6 +37,18 @@ export const TableUsers: React.FC = () => {
     {
       title: 'Updated at',
       dataIndex: 'updatedAt',
+    },
+    {
+      title: 'Action',
+      key: 'action',
+      width: '200px',
+      render: (_, record) => (
+        <Space size="middle">
+          <Button type="link" size="small" href={paths.userDetail(record.id.toString())}>
+            Detail
+          </Button>
+        </Space>
+      ),
     },
   ];
 
