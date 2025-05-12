@@ -13,5 +13,8 @@ export const usersApi = {
   },
   createUser: async (data: CreateUser) => {
     return UsersService.usersControllerCreateUser({ requestBody: data });
-  }
+  },
+  getUserDetail: async (id: number) => {
+    return UsersService.usersControllerGetUserById({ id })
+  },
 }

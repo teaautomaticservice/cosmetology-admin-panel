@@ -1,14 +1,14 @@
-import { Users } from '@typings/api/users';
+import { paths } from '@router/paths';
+import { User } from '@typings/api/users';
 import { Button, Space, Table } from 'antd';
 import { ColumnsType } from 'antd/es/table';
 
 import { useTableUsers } from './useTableUsers';
-import { paths } from '@router/paths';
 
 export const TableUsers: React.FC = () => {
   const { isUsersListLoading, params, updatePaginationParams, usersList, } = useTableUsers();
 
-  const columns: ColumnsType<Users> = [
+  const columns: ColumnsType<User> = [
     {
       title: 'ID',
       dataIndex: 'id',
