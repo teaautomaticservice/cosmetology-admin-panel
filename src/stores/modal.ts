@@ -1,33 +1,47 @@
-import type { History } from "@typings/api/historyMessage";
+import { History } from '@typings/api/historyMessage';
+import { User } from '@typings/api/users';
+import { MODALS_TYPE } from '@typings/modals';
 import { storeFactory } from "@utils/storeFactory";
 
-interface ModalStore {
-  history: History | null;
+type MapModalProps = {
+  [MODALS_TYPE.HISTORY]: History,
+  [MODALS_TYPE.ADD_USER]: User,
+}
+
+interface ModalStore<
+  T extends MODALS_TYPE | null = MODALS_TYPE | null,
+  O = T extends MODALS_TYPE ? MapModalProps[T] : null,
+> {
+  type: T;
+  props?: O;
 }
 
 const { useStore, useChangeEvent } = storeFactory<ModalStore>({
-  history: null,
+  type: null,
 });
 
 export const useModalStore = () => {
-  const [store] = useStore();
+  const [store, setStore] = useStore();
 
   const close = useChangeEvent<void>((state) => ({
     ...state,
-    history: null,
+    type: null,
+    props: null,
   }));
 
-  const open = useChangeEvent<History>((state, payload) => ({
-    ...state,
-    history: payload,
-  }));
+  const open = <T extends MODALS_TYPE>(type: T, props?: MapModalProps[T]) => {
+    setStore({
+      type: type,
+      props,
+    })
+  };
 
-  const isOpen = store.history === null ? false : true;
-  const history = store.history;
+  const isOpen = store.type === null ? false : true;
 
   return {
     isOpen,
-    history,
+    modalType: store.type,
+    modalProps: store.props,
     close,
     open,
   };

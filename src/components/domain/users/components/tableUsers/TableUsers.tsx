@@ -1,13 +1,13 @@
+import { useEffect } from 'react';
+import { useParams } from '@hooks/useParams';
 import { paths } from '@router/paths';
+import { useUsersStore } from '@stores/users';
 import { User } from '@typings/api/users';
-import { Button, Space, Table } from 'antd';
+import { Button, PaginationProps, Space, Table } from 'antd';
 import { ColumnsType } from 'antd/es/table';
-
-import { useTableUsers } from './useTableUsers';
+import { debounce } from 'lodash';
 
 export const TableUsers: React.FC = () => {
-  const { isUsersListLoading, params, updatePaginationParams, usersList, } = useTableUsers();
-
   const columns: ColumnsType<User> = [
     {
       title: 'ID',
@@ -51,6 +51,26 @@ export const TableUsers: React.FC = () => {
       ),
     },
   ];
+
+  const { updateUsersFromApi, usersList, isUsersListLoading } = useUsersStore();
+  const { params, setParams } = useParams();
+
+  const debouncedListUpdate = debounce(updateUsersFromApi, 100);
+
+  const updatePaginationParams:
+    PaginationProps['onChange'] |
+    PaginationProps['onShowSizeChange']
+    = (page, pageSize) => {
+      setParams({
+        page: page.toString(),
+        pageSize: pageSize.toString(),
+      });
+      debouncedListUpdate();
+    };
+
+  useEffect(() => {
+    updateUsersFromApi();
+  }, []);
 
   return (
     <Table

@@ -4,6 +4,7 @@ import { useHistoryMessagesStore } from '@stores/historyMessages';
 import { useModalStore } from '@stores/modal';
 import { History } from '@typings/api/historyMessage';
 import type { ID } from '@typings/common';
+import { MODALS_TYPE } from '@typings/modals';
 
 export const useTableMessages = () => {
   const { historyMessages, updateHistoryMessages, isHistoryLoading } = useHistoryMessagesStore();
@@ -15,7 +16,7 @@ export const useTableMessages = () => {
   }
 
   const editMessage = (history: History) => {
-    open(history);
+    open(MODALS_TYPE.HISTORY, history);
   }
 
   return {

@@ -1,5 +1,5 @@
 import { useEffect, useState } from 'react';
-import { MessageModal } from '@components/domain/historyMessages/components/messageModal/MessageModal';
+import { RootModal } from '@components/domain/rootModal/RootModal';
 import { paths } from '@router/paths';
 import { Layout, Menu, Space, Typography } from 'antd';
 import { MenuItemGroupType, MenuItemType } from 'antd/es/menu/interface';
@@ -104,7 +104,7 @@ export const MainLayout: React.FC = ({ children }: React.PropsWithChildren) => {
           </Space>
         </Content>
       </Layout>
-      <MessageModal />
+      <RootModal />
     </Layout>
   );
 }

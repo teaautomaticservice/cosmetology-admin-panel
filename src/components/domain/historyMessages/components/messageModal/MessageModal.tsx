@@ -1,4 +1,5 @@
 import React from "react";
+import { History } from '@typings/api/historyMessage';
 import { dateUtils } from "@utils/dateUtils";
 import { Input,Modal } from 'antd';
 import { Controller } from 'react-hook-form';
@@ -6,12 +7,13 @@ import { Controller } from 'react-hook-form';
 import { useMessageModal } from "./services/useMessageModal";
 
 export const MessageModal: React.FC = () => {
-  const { isOpen, close, history, submitForm, formControl, okClick } = useMessageModal();
+  const { isOpen, close, modalProps, submitForm, formControl, okClick } = useMessageModal();
 
-  if (!history) {
+  if (!isOpen || !modalProps) {
     return null;
   }
 
+  const history = modalProps as History;
   const date = dateUtils.formattedDateWithTime(new Date(history.date));
   const title = `Message from '${history.owner}' Date: ${date}`;
 

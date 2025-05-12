@@ -1,22 +1,19 @@
-import { usersApi } from '@apiMethods/usersApi';
-import { UserTypeEnum } from '@typings/api/users';
+import { useModalStore } from '@stores/modal';
+import { MODALS_TYPE } from '@typings/modals';
 import { Button } from 'antd';
 
 import { TableUsers } from './components/tableUsers/TableUsers'
 
 export const Users: React.FC = () => {
-  const createUser = async () => {
-    const resp = await usersApi.createUser({
-      email: 'test4@test.com',
-      type: UserTypeEnum.OPERATOR,
-      displayName: 'newCoolUser',
-    });
-    console.log(resp);
-  }
+  const { open } = useModalStore();
+
+  const openUserModal = () => {
+    open(MODALS_TYPE.ADD_USER)
+  };
 
   return (
     <div>
-      <Button type="primary" onClick={createUser}>Create user</Button>
+      <Button type="primary" onClick={openUserModal}>Create user</Button>
       <TableUsers />
     </div>
   );
