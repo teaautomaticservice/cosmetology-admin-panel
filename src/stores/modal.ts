@@ -1,16 +1,13 @@
-import { History } from '@typings/api/historyMessage';
-import { User } from '@typings/api/users';
+import { ComponentProps } from 'react';
 import { MODALS_TYPE } from '@typings/modals';
 import { storeFactory } from "@utils/storeFactory";
+import { ModalsMap } from 'src/constants/modals';
 
-type MapModalProps = {
-  [MODALS_TYPE.HISTORY]: History,
-  [MODALS_TYPE.ADD_USER]: User,
-}
+type GetComponentsMapProp<T extends MODALS_TYPE> = ComponentProps<(typeof ModalsMap)[T]>;
 
 interface ModalStore<
   T extends MODALS_TYPE | null = MODALS_TYPE | null,
-  O = T extends MODALS_TYPE ? MapModalProps[T] : null,
+  O = T extends MODALS_TYPE ? GetComponentsMapProp<T> : null,
 > {
   type: T;
   props?: O;
@@ -29,7 +26,7 @@ export const useModalStore = () => {
     props: null,
   }));
 
-  const open = <T extends MODALS_TYPE>(type: T, props?: MapModalProps[T]) => {
+  const open = <T extends MODALS_TYPE>(type: T, props?: GetComponentsMapProp<T>) => {
     setStore({
       type: type,
       props,

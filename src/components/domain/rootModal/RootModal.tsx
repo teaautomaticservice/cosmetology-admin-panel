@@ -1,24 +1,16 @@
 import { useModalStore } from '@stores/modal';
-import { MODALS_TYPE } from '@typings/modals';
-
-import { MessageModal } from '../historyMessages/components/messageModal/MessageModal';
-import { AddNewUser } from '../users/components/addNewUser/AddNewUser';
-
-const ModalsMap = {
-  [MODALS_TYPE.HISTORY]: MessageModal,
-  [MODALS_TYPE.ADD_USER]: AddNewUser,
-}
+import { ModalsMap } from 'src/constants/modals';
 
 export const RootModal: React.FC = () => {
-  const { modalType } = useModalStore();
+  const { modalType, modalProps } = useModalStore();
 
   if (!modalType) {
     return null;
   }
 
-  const Component = ModalsMap[modalType]
+  const Component = ModalsMap[modalType];
 
   return (
-    <Component />
+    <Component {...modalProps} />
   );
 };

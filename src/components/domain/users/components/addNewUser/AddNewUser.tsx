@@ -2,20 +2,23 @@ import { usersApi } from '@apiMethods/usersApi';
 import { useModalStore } from '@stores/modal';
 import { UserTypeEnum } from '@typings/api/users';
 import { MODALS_TYPE } from '@typings/modals';
-import { Modal } from 'antd'
+import { Modal } from 'antd';
 
 export const AddNewUser: React.FC = () => {
   const { close, modalType } = useModalStore();
 
   const isOpen = modalType === MODALS_TYPE.ADD_USER;
 
+  if (!isOpen) {
+    return null;
+  }
+
   const addUser = async () => {
-    const resp = await usersApi.createUser({
+    await usersApi.createUser({
       email: 'test4@test.com',
       type: UserTypeEnum.OPERATOR,
       displayName: 'newCoolUser',
     });
-    console.log(resp);
   }
       
   return (

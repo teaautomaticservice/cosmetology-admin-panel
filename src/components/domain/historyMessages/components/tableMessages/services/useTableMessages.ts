@@ -16,7 +16,7 @@ export const useTableMessages = () => {
   }
 
   const editMessage = (history: History) => {
-    open(MODALS_TYPE.HISTORY, history);
+    open(MODALS_TYPE.HISTORY, { history });
   }
 
   return {
