@@ -1,8 +1,9 @@
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import { usersApi } from '@apiMethods/usersApi';
 import { useModalStore } from '@stores/modal';
 import { useUsersStore } from '@stores/users';
 import { CurrentUser, UserType, UserTypeEnum } from '@typings/api/users';
+import { ApiError } from '@typings/errors';
 import { MODALS_TYPE } from '@typings/modals';
 import {
   Input,
@@ -25,13 +26,19 @@ type FormData = {
   displayName?: string;
 }
 
+type FormApiError = {
+  email?: string[];
+  type?: string[];
+  displayName?: string[];
+}
+
 export const AddNewUser: React.FC = () => {
   const { close, modalType } = useModalStore();
   const {
     handleSubmit,
     control: formControl,
     formState,
-    
+    setError,
   } = useForm<FormData>({
     defaultValues: {
       type: UserTypeEnum.OPERATOR,
@@ -39,10 +46,17 @@ export const AddNewUser: React.FC = () => {
   });
   const [isLoading, setIsLoading] = useState(false);
   const { updateUsersFromApi } = useUsersStore();
+  const [apiErrors, setApiErrors] = useState<FormApiError>({})
 
   const { errors: formErrors } = formState
 
   const isOpen = modalType === MODALS_TYPE.ADD_USER;
+
+  useEffect(() => {
+    Object.entries(apiErrors).forEach(([key, value]) => {
+      setError(key as keyof FormApiError, { message: value.join('\n')});
+    })
+  }, [apiErrors]);
 
   if (!isOpen) {
     return null;
@@ -54,6 +68,7 @@ export const AddNewUser: React.FC = () => {
     type
   }) => {
     setIsLoading(true);
+    setApiErrors({})
     try {
       await usersApi.createUser({
         email,
@@ -62,8 +77,13 @@ export const AddNewUser: React.FC = () => {
       });
       await updateUsersFromApi();
     } catch (e) {
-      // eslint-disable-next-line no-console
-      console.error(e);
+      const { response, status } = e as ApiError;
+      if (status === 400 && response?.data?.cause) {
+        setApiErrors(response.data.cause ?? {});
+      } else {
+        // eslint-disable-next-line no-console
+        console.error(e);
+      }
     } finally {
       setIsLoading(false);
     }
