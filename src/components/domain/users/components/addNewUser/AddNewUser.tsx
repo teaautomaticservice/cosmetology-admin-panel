@@ -76,6 +76,7 @@ export const AddNewUser: React.FC = () => {
         displayName,
       });
       await updateUsersFromApi();
+      close();
     } catch (e) {
       const { response, status } = e as ApiError;
       if (status === 400 && response?.data?.cause) {
