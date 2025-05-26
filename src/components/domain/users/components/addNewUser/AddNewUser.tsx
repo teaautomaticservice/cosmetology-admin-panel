@@ -176,8 +176,6 @@ export const AddNewUser: React.FC = () => {
           />
 
         </div>
-
-
       </form>
     </Modal>
   )
