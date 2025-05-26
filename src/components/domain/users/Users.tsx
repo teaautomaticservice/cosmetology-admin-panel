@@ -1,3 +1,4 @@
+import { HeadingContainer } from '@components/ui/headingContainer/HeadingContainer';
 import { useModalStore } from '@stores/modal';
 import { MODALS_TYPE } from '@typings/modals';
 import { Button } from 'antd';
@@ -13,7 +14,9 @@ export const Users: React.FC = () => {
 
   return (
     <div>
-      <Button type="primary" onClick={openUserModal}>Create user</Button>
+      <HeadingContainer>
+        <Button type="primary" onClick={openUserModal}>Create user</Button>
+      </HeadingContainer>
       <TableUsers />
     </div>
   );
