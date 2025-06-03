@@ -16,6 +16,7 @@ export namespace UsersDto {
         BLOCKED = 'blocked',
         DELETED = 'deleted',
         DELETED_BY_GDPR = 'deletedByGdpr',
+        PENDING = 'pending',
         ACTIVE = 'active',
         BANNED = 'banned',
         DEACTIVATED = 'deactivated',
