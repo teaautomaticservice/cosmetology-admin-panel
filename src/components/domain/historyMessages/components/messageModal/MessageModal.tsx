@@ -1,17 +1,43 @@
 import React from "react";
+import { historyMessagesMethods } from '@apiMethods/historyApi';
+import { useHistoryMessagesStore } from '@stores/historyMessages';
+import { useModalStore } from '@stores/modal';
+import { History } from '@typings/api/historyMessage';
+import { MODALS_TYPE } from '@typings/modals';
 import { dateUtils } from "@utils/dateUtils";
 import { Input,Modal } from 'antd';
-import { Controller } from 'react-hook-form';
+import { Controller, SubmitHandler, useForm } from 'react-hook-form';
 
-import { useMessageModal } from "./services/useMessageModal";
+import { UpdateMessageForm } from './types';
 
-export const MessageModal: React.FC = () => {
-  const { isOpen, close, history, submitForm, formControl, okClick } = useMessageModal();
+type Props = {
+  history?: History;
+}
 
-  if (!history) {
+export const MessageModal: React.FC<Props> = ({ history }) => {
+  const { close, modalType } = useModalStore();
+  const { updateHistoryMessages } = useHistoryMessagesStore();
+  const { handleSubmit, control: formControl, reset, getValues } = useForm({
+    defaultValues: {
+      message: "",
+    }
+  });
+  const isOpen = modalType === MODALS_TYPE.HISTORY;
+
+  if (!isOpen || !history) {
     return null;
   }
 
+  const updateMessage: SubmitHandler<UpdateMessageForm> = async ({ message }) => {
+    const { data } = await historyMessagesMethods.updateHistory(history.id, message);
+
+    updateHistoryMessages(data);
+    close();
+    reset();
+  };
+
+  const okClick = () => updateMessage(getValues());
+  const submitForm = handleSubmit(updateMessage);
   const date = dateUtils.formattedDateWithTime(new Date(history.date));
   const title = `Message from '${history.owner}' Date: ${date}`;
 
@@ -21,7 +47,7 @@ export const MessageModal: React.FC = () => {
       open={isOpen}
       onOk={okClick}
       // confirmLoading={confirmLoading}
-      onCancel={close}
+      onCancel={() => close()}
     >
       <h4>Old message:</h4>
       <p>{history.message}</p>

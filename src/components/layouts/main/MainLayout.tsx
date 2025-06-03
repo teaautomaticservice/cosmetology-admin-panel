@@ -1,5 +1,5 @@
 import { useEffect, useState } from 'react';
-import { MessageModal } from '@components/domain/historyMessages/components/messageModal/MessageModal';
+import { RootModal } from '@components/domain/rootModal/RootModal';
 import { paths } from '@router/paths';
 import { Layout, Menu, Space, Typography } from 'antd';
 import { MenuItemGroupType, MenuItemType } from 'antd/es/menu/interface';
@@ -64,7 +64,9 @@ const findCurrentMenuItems = (key: string): MenuItemType | null => {
 export const MainLayout: React.FC = ({ children }: React.PropsWithChildren) => {
   const navigate = useNavigate();
   const { pathname } = useLocation();
-  const [title, setTitle] = useState('')
+  const [title, setTitle] = useState('');
+
+  const chapterOfPath = `/${pathname.split('/')[1]}`;
 
   const onClick: MenuClickEventHandler = ({ key }) => {
     if (typeof key === 'string') {
@@ -73,12 +75,11 @@ export const MainLayout: React.FC = ({ children }: React.PropsWithChildren) => {
   }
 
   useEffect(() => {
-    const selectedItem = findCurrentMenuItems(pathname);
-
+    const selectedItem = findCurrentMenuItems(chapterOfPath);
     if (selectedItem?.label) {
       setTitle(selectedItem.label.toString());
     }
-  }, [pathname])
+  }, [chapterOfPath])
 
   return (
     <Layout className={s.root}>
@@ -91,7 +92,7 @@ export const MainLayout: React.FC = ({ children }: React.PropsWithChildren) => {
           <Menu
             mode="inline"
             onClick={onClick}
-            defaultSelectedKeys={[pathname]}
+            defaultSelectedKeys={[chapterOfPath]}
             items={menuItems}
           />
         </Sider>
@@ -103,7 +104,7 @@ export const MainLayout: React.FC = ({ children }: React.PropsWithChildren) => {
           </Space>
         </Content>
       </Layout>
-      <MessageModal />
+      <RootModal />
     </Layout>
   );
 }

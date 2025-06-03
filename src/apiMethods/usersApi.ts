@@ -1,5 +1,5 @@
 import { UsersService } from '@typings/api/generated'
-import { UsersList } from '@typings/api/users';
+import { CreateUser, UsersList } from '@typings/api/users';
 import { getSearchParams } from '@utils/getSearchParams';
 
 export const usersApi = {
@@ -10,5 +10,11 @@ export const usersApi = {
       ...(pageSize && { pageSize: Number(pageSize) }),
     });
     return response;
-  }
+  },
+  createUser: async (data: CreateUser) => {
+    return UsersService.usersControllerCreateUser({ requestBody: data });
+  },
+  getUserDetail: async (id: number) => {
+    return UsersService.usersControllerGetUserById({ id })
+  },
 }

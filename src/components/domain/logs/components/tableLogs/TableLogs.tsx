@@ -1,16 +1,19 @@
+import { useEffect } from 'react';
+import { usePagination } from '@hooks/usePagination';
+import { useLogsStore } from '@stores/logsStore';
 import type { Logs } from '@typings/api/logs';
 import { Table } from 'antd';
 import { ColumnsType } from 'antd/es/table';
 
-import { useTableLogs } from './services/useTableLogs';
-
 export const TableLogs: React.FC = () => {
-  const {
-    logsList,
-    isLogsListLoading,
-    params,
-    updatePaginationParams,
-  } = useTableLogs();
+  const { logsList, updateLogsFromApi, isLogsListLoading } = useLogsStore();
+  const { params, updatePaginationParams } = usePagination({
+    updater: updateLogsFromApi,
+  });
+
+  useEffect(() => {
+    updateLogsFromApi();
+  }, []);
 
   const columns: ColumnsType<Logs> = [
     {

@@ -3,6 +3,7 @@ export const paths = {
   main: '/',
 
   users: '/users',
+  userDetail: (userId: string = ':id') => `/users/${userId}`,
 
   logs: '/logs',
 

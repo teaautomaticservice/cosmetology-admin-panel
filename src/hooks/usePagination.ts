@@ -1,14 +1,16 @@
-import { useEffect } from 'react';
-import { useParams } from '@hooks/useParams';
-import { useUsersStore } from '@stores/users';
 import { PaginationProps } from 'antd';
 import { debounce } from 'lodash';
 
-export const useTableUsers = () => {
-  const { updateUsersFromApi, usersList, isUsersListLoading } = useUsersStore();
+import { useParams } from './useParams';
+
+export const usePagination = ({
+  updater
+}: {
+  updater: (...args: any[]) => any;
+}) => {
   const { params, setParams } = useParams();
 
-  const debouncedListUpdate = debounce(updateUsersFromApi, 100);
+  const debouncedListUpdate = debounce(updater, 100);
 
   const updatePaginationParams:
     PaginationProps['onChange'] |
@@ -21,14 +23,8 @@ export const useTableUsers = () => {
       debouncedListUpdate();
     };
 
-  useEffect(() => {
-    updateUsersFromApi()
-  }, []);
-
   return {
-    usersList,
-    isUsersListLoading,
     params,
     updatePaginationParams,
-  };
+  }
 }

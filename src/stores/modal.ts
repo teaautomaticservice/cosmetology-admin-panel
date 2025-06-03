@@ -1,33 +1,44 @@
-import type { History } from "@typings/api/historyMessage";
+import { ComponentProps } from 'react';
+import { MODALS_TYPE } from '@typings/modals';
 import { storeFactory } from "@utils/storeFactory";
+import { ModalsMap } from 'src/constants/modals';
 
-interface ModalStore {
-  history: History | null;
+type GetComponentsMapProp<T extends MODALS_TYPE> = ComponentProps<(typeof ModalsMap)[T]>;
+
+interface ModalStore<
+  T extends MODALS_TYPE | null = MODALS_TYPE | null,
+  O = T extends MODALS_TYPE ? GetComponentsMapProp<T> : null,
+> {
+  type: T;
+  props?: O;
 }
 
 const { useStore, useChangeEvent } = storeFactory<ModalStore>({
-  history: null,
+  type: null,
 });
 
 export const useModalStore = () => {
-  const [store] = useStore();
+  const [store, setStore] = useStore();
 
   const close = useChangeEvent<void>((state) => ({
     ...state,
-    history: null,
+    type: null,
+    props: null,
   }));
 
-  const open = useChangeEvent<History>((state, payload) => ({
-    ...state,
-    history: payload,
-  }));
+  const open = <T extends MODALS_TYPE>(type: T, props?: GetComponentsMapProp<T>) => {
+    setStore({
+      type: type,
+      props,
+    })
+  };
 
-  const isOpen = store.history === null ? false : true;
-  const history = store.history;
+  const isOpen = store.type === null ? false : true;
 
   return {
     isOpen,
-    history,
+    modalType: store.type,
+    modalProps: store.props,
     close,
     open,
   };

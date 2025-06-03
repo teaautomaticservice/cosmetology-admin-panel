@@ -8,6 +8,7 @@ export { OpenAPI } from './core/OpenAPI';
 export type { OpenAPIConfig } from './core/OpenAPI';
 
 export type { AppConfigDto } from './models/AppConfigDto';
+export { CreateUserDto } from './models/CreateUserDto';
 export { CurrentUserDto } from './models/CurrentUserDto';
 export type { HistoryDto } from './models/HistoryDto';
 export type { HistoryPaginatedDto } from './models/HistoryPaginatedDto';

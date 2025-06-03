@@ -1,11 +1,12 @@
 import { usersApi } from '@apiMethods/usersApi';
+import { User } from '@typings/api/users';
 import { storeFactory } from '@utils/storeFactory';
 
 const {
   useStore: useUsersListStore,
   useAsyncMethod: useUsersListAsyncMethod,
 } = storeFactory<{
-  data: [],
+  data: User[],
   count: number,
 }>({
   data: [],
@@ -29,7 +30,7 @@ export const useUsersStore = () => {
     } finally {
       setIsLoading(false);
     }
-  })
+  });
 
   return {
     usersList,
