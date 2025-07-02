@@ -3,6 +3,7 @@
 /* tslint:disable */
 /* eslint-disable */
 import type { CreateUserDto } from '../models/CreateUserDto';
+import type { InitiateHardResetPasswordDto } from '../models/InitiateHardResetPasswordDto';
 import type { UsersDto } from '../models/UsersDto';
 import type { UsersPaginatedDto } from '../models/UsersPaginatedDto';
 import type { CancelablePromise } from '../core/CancelablePromise';
@@ -61,6 +62,25 @@ export class UsersService {
         return __request(OpenAPI, {
             method: 'POST',
             url: '/users/create',
+            body: requestBody,
+            mediaType: 'application/json',
+        });
+    }
+    /**
+     * @returns UsersDto Hard reset password has been initiated
+     * @throws ApiError
+     */
+    public static usersControllerInitiateHardResetPassword({
+        requestBody,
+    }: {
+        /**
+         * Initiate hard reset password for user
+         */
+        requestBody: InitiateHardResetPasswordDto,
+    }): CancelablePromise<UsersDto> {
+        return __request(OpenAPI, {
+            method: 'POST',
+            url: '/users/initiate-hard-reset-password',
             body: requestBody,
             mediaType: 'application/json',
         });

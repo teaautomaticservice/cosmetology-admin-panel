@@ -17,4 +17,7 @@ export const usersApi = {
   getUserDetail: async (id: number) => {
     return UsersService.usersControllerGetUserById({ id })
   },
+  userHardResetPassword: async (userId: number) => {
+    return UsersService.usersControllerInitiateHardResetPassword({ requestBody: { userId }})
+  }
 }
