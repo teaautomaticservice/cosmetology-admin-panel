@@ -18,7 +18,7 @@ const { useStore, useChangeEvent } = storeFactory<ModalStore>({
 });
 
 export const useModalStore = () => {
-  const [store, setStore] = useStore();
+  const [state, setState] = useStore();
 
   const close = useChangeEvent<void>((state) => ({
     ...state,
@@ -27,18 +27,18 @@ export const useModalStore = () => {
   }));
 
   const open = <T extends MODALS_TYPE>(type: T, props?: GetComponentsMapProp<T>) => {
-    setStore({
+    setState({
       type: type,
       props,
     })
   };
 
-  const isOpen = store.type === null ? false : true;
+  const isOpen = state.type === null ? false : true;
 
   return {
     isOpen,
-    modalType: store.type,
-    modalProps: store.props,
+    modalType: state.type,
+    modalProps: state.props,
     close,
     open,
   };

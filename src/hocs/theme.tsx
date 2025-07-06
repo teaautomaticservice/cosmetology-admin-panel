@@ -1,6 +1,7 @@
 import React from "react";
 import { colors } from '@ant/colors';
-import { ConfigProvider, ThemeConfig,  } from "antd";
+import { Toasts } from '@components/ui/toasts/Toasts';
+import { ConfigProvider, ThemeConfig, } from "antd";
 
 const themeConfig: ThemeConfig = {
   token: {
@@ -19,6 +20,7 @@ export const withAntTheme = (Component: React.FC): React.FC => {
     return (
       <ConfigProvider theme={themeConfig}>
         <Component {...props} />
+        <Toasts />
       </ConfigProvider>
     );
   };

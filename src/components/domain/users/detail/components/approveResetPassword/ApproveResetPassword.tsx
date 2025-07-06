@@ -1,24 +1,36 @@
+import { useState } from 'react';
 import { usersApi } from '@apiMethods/usersApi';
 import { useModalStore } from '@stores/modal';
 import { useUserDetailStore } from '@stores/userDetail';
 import { MODALS_TYPE } from '@typings/modals';
+import { toastEventBus } from '@utils/domain/toastEventBus';
 import { Modal } from 'antd'
 
 import s from './approveResetPassword.module.css';
 
 export const ApproveResetPassword: React.FC = () => {
-  const { modalType, open, close } = useModalStore();
+  const { modalType, open } = useModalStore();
   const { userDetail } = useUserDetailStore();
+  const [isLoading, setIsLoading] = useState(false);
 
   const isOpen = modalType === MODALS_TYPE.USER_HARD_RESET_PASSWORD_APPROVE;
 
-  const hardResetPassword = () => {
+  const returnBack = () => open(MODALS_TYPE.USER_ACTIONS);
+
+  const hardResetPassword = async () => {
     if (userDetail) {
-      usersApi.userHardResetPassword(userDetail.id);
-      close();
+      try {
+        setIsLoading(true);
+        await usersApi.userHardResetPassword(userDetail.id);
+        toastEventBus.emit('addToast', {
+          description: `For user ${userDetail.displayName} password have been reset`,
+        });
+        returnBack();
+      } finally {
+        setIsLoading(false);
+      }
     }
   }
-  const returnBack = () => open(MODALS_TYPE.USER_ACTIONS);
 
   return (
     <Modal
@@ -29,8 +41,8 @@ export const ApproveResetPassword: React.FC = () => {
       onCancel={returnBack}
       okButtonProps={{
         title: 'Submit',
-        // loading: isLoading,
-        // disabled: isLoading,
+        loading: isLoading,
+        disabled: isLoading,
       }}
     >
       <div className={s.container}>

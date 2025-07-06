@@ -24,7 +24,6 @@ export const UserDetail: React.FC = () => {
   return (
     <div>
       <h2>User detail</h2>
-
       {isUserDetailLoading && (
         <div>Loading...</div>
       )}
