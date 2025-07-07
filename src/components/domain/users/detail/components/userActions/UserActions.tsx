@@ -5,9 +5,7 @@ import { Button, Modal } from 'antd';
 import s from './userActions.module.css';
 
 export const UserActions: React.FC = () => {
-  const { close, modalType, open } = useModalStore();
-
-  const isOpen = modalType === MODALS_TYPE.USER_ACTIONS;
+  const { close, open } = useModalStore();
 
   const openApproveResetPassword = () => open(MODALS_TYPE.USER_HARD_RESET_PASSWORD_APPROVE);
 
@@ -21,7 +19,7 @@ export const UserActions: React.FC = () => {
     <Modal
       className={s.root}
       title='User action'
-      open={isOpen}
+      open={true}
       footer={footer}
       onCancel={() => close()}
     >
