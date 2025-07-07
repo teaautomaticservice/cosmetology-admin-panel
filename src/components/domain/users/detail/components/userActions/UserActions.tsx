@@ -23,6 +23,7 @@ export const UserActions: React.FC = () => {
       title='User action'
       open={isOpen}
       footer={footer}
+      onCancel={() => close()}
     >
       <div className={s.container}>
         <Button onClick={openApproveResetPassword}>Reset password</Button>
