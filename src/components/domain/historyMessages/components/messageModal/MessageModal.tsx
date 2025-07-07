@@ -3,7 +3,6 @@ import { historyMessagesMethods } from '@apiMethods/historyApi';
 import { useHistoryMessagesStore } from '@stores/historyMessages';
 import { useModalStore } from '@stores/modal';
 import { History } from '@typings/api/historyMessage';
-import { MODALS_TYPE } from '@typings/modals';
 import { dateUtils } from "@utils/dateUtils";
 import { Input,Modal } from 'antd';
 import { Controller, SubmitHandler, useForm } from 'react-hook-form';
@@ -15,16 +14,15 @@ type Props = {
 }
 
 export const MessageModal: React.FC<Props> = ({ history }) => {
-  const { close, modalType } = useModalStore();
+  const { close } = useModalStore();
   const { updateHistoryMessages } = useHistoryMessagesStore();
   const { handleSubmit, control: formControl, reset, getValues } = useForm({
     defaultValues: {
       message: "",
     }
   });
-  const isOpen = modalType === MODALS_TYPE.HISTORY;
 
-  if (!isOpen || !history) {
+  if (!history) {
     return null;
   }
 
@@ -44,7 +42,7 @@ export const MessageModal: React.FC<Props> = ({ history }) => {
   return (
     <Modal
       title={title}
-      open={isOpen}
+      open={true}
       onOk={okClick}
       // confirmLoading={confirmLoading}
       onCancel={() => close()}

@@ -12,6 +12,7 @@ export { CreateUserDto } from './models/CreateUserDto';
 export { CurrentUserDto } from './models/CurrentUserDto';
 export type { HistoryDto } from './models/HistoryDto';
 export type { HistoryPaginatedDto } from './models/HistoryPaginatedDto';
+export type { InitiateHardResetPasswordDto } from './models/InitiateHardResetPasswordDto';
 export type { LoginFormDto } from './models/LoginFormDto';
 export type { LogsDto } from './models/LogsDto';
 export type { LogsPaginatedDto } from './models/LogsPaginatedDto';

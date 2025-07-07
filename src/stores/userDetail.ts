@@ -6,31 +6,32 @@ const {
   useStore,
 } = storeFactory<{
   user: User | null,
+  isLoading: boolean;
 }>({
   user: null,
+  isLoading: false,
 });
-
-const {
-  useStore: useIsLoadingStore,
-} = storeFactory<boolean>(false);
 
 export const useUserDetailStore = () => {
   const [userDetailState, setUserDetailState] = useStore();
-  const [isUserDetailLoading, setIsLoading] = useIsLoadingStore();
 
   const updateUserDetailFromApi = async (id: number) => {
-    setIsLoading(true);
+    setUserDetailState({
+      isLoading: true,
+    });
     try {
       const userDetail = await usersApi.getUserDetail(id);
       setUserDetailState({ user: userDetail });
     } finally {
-      setIsLoading(false);
+      setUserDetailState({
+        isLoading: false,
+      });
     }
   };
 
   return {
     userDetail: userDetailState.user,
-    isUserDetailLoading,
+    isUserDetailLoading: userDetailState.isLoading,
     updateUserDetailFromApi,
   };
 };

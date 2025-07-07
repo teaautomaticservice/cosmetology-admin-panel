@@ -4,7 +4,7 @@ import { useModalStore } from '@stores/modal';
 import { useUsersStore } from '@stores/users';
 import { CurrentUser, UserType, UserTypeEnum } from '@typings/api/users';
 import { ApiError } from '@typings/errors';
-import { MODALS_TYPE } from '@typings/modals';
+import { toastEventBus } from '@utils/domain/toastEventBus';
 import {
   Input,
   Modal,
@@ -33,7 +33,7 @@ type FormApiError = {
 }
 
 export const AddNewUser: React.FC = () => {
-  const { close, modalType } = useModalStore();
+  const { close } = useModalStore();
   const {
     handleSubmit,
     control: formControl,
@@ -50,17 +50,11 @@ export const AddNewUser: React.FC = () => {
 
   const { errors: formErrors } = formState
 
-  const isOpen = modalType === MODALS_TYPE.ADD_USER;
-
   useEffect(() => {
     Object.entries(apiErrors).forEach(([key, value]) => {
-      setError(key as keyof FormApiError, { message: value.join('\n')});
+      setError(key as keyof FormApiError, { message: value.join('\n') });
     })
   }, [apiErrors]);
-
-  if (!isOpen) {
-    return null;
-  };
 
   const addUser: SubmitHandler<FormData> = async ({
     email,
@@ -70,10 +64,13 @@ export const AddNewUser: React.FC = () => {
     setIsLoading(true);
     setApiErrors({})
     try {
-      await usersApi.createUser({
+      const createdUser = await usersApi.createUser({
         email,
         type: type as CurrentUser['type'],
         displayName,
+      });
+      toastEventBus.emit('addToast', {
+        description: `New user '${createdUser.displayName}' have been created`,
       });
       await updateUsersFromApi();
       close();
@@ -96,7 +93,7 @@ export const AddNewUser: React.FC = () => {
     <Modal
       className={s.root}
       title='Add new user'
-      open={isOpen}
+      open={true}
       onOk={submitForm}
 
       okButtonProps={{
