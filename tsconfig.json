@@ -30,7 +30,7 @@
       "@stores/*": ["./src/stores/*"],
       "@typings/*": ["./src/typings/*"],
       "@utils/*": ["./src/utils/*"],
-      "@shared/*": ["./src/shared/*"]
+      "@shared/*": ["./src/libs/shared//src/*"]
     }
   },
   "include": [

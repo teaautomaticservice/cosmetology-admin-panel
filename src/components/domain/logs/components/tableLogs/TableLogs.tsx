@@ -4,6 +4,7 @@ import { useLogsStore } from '@stores/logsStore';
 import type { Logs } from '@typings/api/logs';
 import { Table } from 'antd';
 import { ColumnsType } from 'antd/es/table';
+import { dateUtils } from "@shared/utils/dateUtils";
 
 export const TableLogs: React.FC = () => {
   const { logsList, updateLogsFromApi, isLogsListLoading } = useLogsStore();
@@ -20,6 +21,7 @@ export const TableLogs: React.FC = () => {
       title: 'Timestamp',
       dataIndex: 'timestamp',
       sortOrder: 'ascend',
+      render: (val) => (<span>{dateUtils.formattedDate(val)}</span>)
     },
     {
       title: 'Key',
