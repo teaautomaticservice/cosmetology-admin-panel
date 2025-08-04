@@ -11,7 +11,7 @@ jobs:
     runs-on: self-hosted
     steps:
       - name: Prepare
-        uses: ./.github/template/build
+        uses: ./.github/template/prepare
         with:
           ssh-key: ${{ secrets.SSH_PRIVATE_KEY }}
 
@@ -20,6 +20,8 @@ jobs:
         with:
           submodules: recursive
           fetch-depth: 0
+      - name: Build
+        uses: ./.github/template/build
       - name: Lint
         run: npm run lint
 
@@ -33,7 +35,7 @@ jobs:
     runs-on: self-hosted
     steps:
       - name: Prepare
-        uses: ./.github/template/build
+        uses: ./.github/template/prepare
         with:
           ssh-key: ${{ secrets.SSH_PRIVATE_KEY }}
 
