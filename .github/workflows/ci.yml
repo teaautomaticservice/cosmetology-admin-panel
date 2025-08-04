@@ -10,13 +10,16 @@ jobs:
   lint:
     runs-on: self-hosted
     steps:
+      - name: Prepare
+        uses: ./.github/template/build
+        with:
+          ssh-key: ${{ secrets.SSH_PRIVATE_KEY }}
+
       - name: Checkout branch
         uses: actions/checkout@v4
         with:
           submodules: recursive
           fetch-depth: 0
-      - name: Prepare
-        uses: ./.github/template/build
       - name: Lint
         run: npm run lint
 
@@ -29,6 +32,11 @@ jobs:
        github.base_ref == 'main')
     runs-on: self-hosted
     steps:
+      - name: Prepare
+        uses: ./.github/template/build
+        with:
+          ssh-key: ${{ secrets.SSH_PRIVATE_KEY }}
+
       - name: Checkout branch
         uses: actions/checkout@v4
         with:
