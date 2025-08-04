@@ -1,4 +1,3 @@
-import React from "react";
 import { historyMessagesMethods } from '@apiMethods/historyApi';
 import { useHistoryMessagesStore } from '@stores/historyMessages';
 import { useModalStore } from '@stores/modal';

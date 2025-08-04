@@ -13,6 +13,7 @@ module.exports = {
       "@stores": path.resolve(__dirname, './src/stores'),
       "@typings": path.resolve(__dirname, './src/typings'),
       "@utils": path.resolve(__dirname, './src/utils'),
+      "@shared": path.resolve(__dirname, './src/libs/shared/src'),
     },
   },
   devServer: (devServerConfig) => {

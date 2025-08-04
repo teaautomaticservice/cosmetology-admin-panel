@@ -3,6 +3,7 @@
   "version": "0.1.0",
   "private": true,
   "scripts": {
+    "init-submodule": "git submodule update --init --recursive",
     "dev": "craco start",
     "build": "craco build",
     "lint": "eslint \"src/**/*.{ts,tsx}\"",
