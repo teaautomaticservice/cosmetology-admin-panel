@@ -7,7 +7,7 @@ ENV REACT_APP_API_URL=$REACT_APP_API_URL
 
 COPY . /app
 WORKDIR /app
-RUN --mount=type=ssh git submodule update --init --recursive
+RUN --mount=type=ssh,id=default git submodule update --init --recursive
 RUN npm ci
 RUN npm run build
 
