@@ -1,3 +1,5 @@
+# syntax=docker/dockerfile:1.4
+
 FROM node:20.4.0-alpine as builder
 
 ARG REACT_APP_API_URL

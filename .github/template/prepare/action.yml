@@ -15,3 +15,9 @@ runs:
         echo "${{ inputs.ssh-key }}" > ~/.ssh/id_ed25519
         chmod 600 ~/.ssh/id_ed25519
         ssh-keyscan github.com >> ~/.ssh/known_hosts
+
+    - name: Start SSH agent and add key
+      shell: bash
+      run: |
+        eval "$(ssh-agent -s)"
+        ssh-add ~/.ssh/id_ed25519
