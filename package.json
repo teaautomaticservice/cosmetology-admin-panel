@@ -4,8 +4,8 @@
   "private": true,
   "scripts": {
     "init-submodule": "git submodule update --init --recursive",
-    "dev": "craco start",
-    "build": "craco build",
+    "dev": "react-app-rewired start",
+    "build": "react-app-rewired build",
     "lint": "eslint \"src/**/*.{ts,tsx}\"",
     "lint:fix": "eslint \"src/**/*.{ts,tsx}\" --fix",
     "test": "craco test",
@@ -55,7 +55,6 @@
   },
   "devDependencies": {
     "@babel/plugin-proposal-private-property-in-object": "^7.21.11",
-    "@craco/craco": "^7.1.0",
     "@types/lodash": "^4.17.7",
     "cross-env": "^7.0.3",
     "eslint-config-react-app": "^7.0.1",
@@ -64,6 +63,7 @@
     "eslint-plugin-simple-import-sort": "^12.1.1",
     "openapi-typescript": "^7.3.3",
     "openapi-typescript-codegen": "^0.29.0",
+    "react-app-rewired": "^2.2.1",
     "react-inject-env": "^2.1.0"
   },
   "overrides": {
