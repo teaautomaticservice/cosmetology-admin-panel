@@ -10,6 +10,8 @@ jobs:
   lint:
     runs-on: self-hosted
     steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
       - name: Prepare
         uses: ./.github/template/prepare
         with:
@@ -34,6 +36,8 @@ jobs:
        github.base_ref == 'main')
     runs-on: self-hosted
     steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
       - name: Prepare
         uses: ./.github/template/prepare
         with:
