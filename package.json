@@ -8,8 +8,6 @@
     "build": "react-app-rewired build",
     "lint": "eslint \"src/**/*.{ts,tsx}\" && npx tsc --noEmit",
     "lint:fix": "eslint \"src/**/*.{ts,tsx}\" --fix && npx tsc --noEmit",
-    "test": "craco test",
-    "eject": "craco eject",
     "openapi": "cross-env NODE_TLS_REJECT_UNAUTHORIZED=0 openapi -i https://localhost:3000/swagger/json -o src/typings/api/generated --request ./openapi/request.ts --useOptions"
   },
   "eslintConfig": {
@@ -50,7 +48,7 @@
     "react-hook-form": "^7.53.0",
     "react-router-dom": "^6.26.1",
     "react-scripts": "5.0.1",
-    "typescript": "^5.5.4",
+    "typescript": "5.1.6",
     "web-vitals": "^4.2.3"
   },
   "devDependencies": {
@@ -67,6 +65,6 @@
     "react-inject-env": "^2.1.0"
   },
   "overrides": {
-    "typescript": "^5.5.4"
+    "typescript": "5.1.6"
   }
 }
