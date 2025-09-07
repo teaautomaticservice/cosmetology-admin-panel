@@ -16,6 +16,15 @@ export const request = <T>(config: OpenAPIConfig, options: ApiRequestOptions): C
         }
       });
     }
+
+    if (options.query) {
+      params = params || new URLSearchParams();
+      Object.entries(options.query).forEach(([key, val]) => {
+        if (val !== undefined) {
+          (params as URLSearchParams).set(key, val)
+        }
+      });
+    }
     
     transport.request<T>({
       url: options.url,
