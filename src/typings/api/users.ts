@@ -8,6 +8,8 @@ import {
 
 export type UserType =  `${CurrentUserDto['type']}`;
 export const UserTypeEnum = CurrentUserDto['type'];
+export type UserStatus =  `${CurrentUserDto['status']}`;
+export const UserStatusEnum = CurrentUserDto['status'];
 export type CurrentUser = CurrentUserDto;
 
 export type User = UsersDto;

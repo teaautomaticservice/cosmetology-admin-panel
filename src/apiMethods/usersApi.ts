@@ -19,5 +19,8 @@ export const usersApi = {
   },
   userHardResetPassword: async (userId: number) => {
     return UsersService.usersControllerInitiateHardResetPassword({ requestBody: { userId }})
+  },
+  userRestartCompleteRegistration: async (userId: number) => {
+    return UsersService.usersControllerRestartCompleteRegistration({ id: userId });
   }
 }

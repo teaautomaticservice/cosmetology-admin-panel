@@ -11,6 +11,6 @@ export const RootModal: React.FC = () => {
   const Component = ModalsMap[modalType];
 
   return (
-    <Component {...modalProps} />
+    <Component {...modalProps as any} />
   );
 };
