@@ -4,6 +4,7 @@
 /* eslint-disable */
 import type { CurrentUserDto } from '../models/CurrentUserDto';
 import type { LoginFormDto } from '../models/LoginFormDto';
+import type { SetupNewPasswordDto } from '../models/SetupNewPasswordDto';
 import type { CancelablePromise } from '../core/CancelablePromise';
 import { OpenAPI } from '../core/OpenAPI';
 import { request as __request } from '../core/request';
@@ -49,9 +50,28 @@ export class AuthorizationService {
         return __request(OpenAPI, {
             method: 'GET',
             url: '/authorization/auth-by-user-token',
-            path: {
+            query: {
                 'userToken': userToken,
             },
+        });
+    }
+    /**
+     * @returns CurrentUserDto User success login
+     * @throws ApiError
+     */
+    public static authorizationControllerSetupNewPassword({
+        requestBody,
+    }: {
+        /**
+         * User login
+         */
+        requestBody: SetupNewPasswordDto,
+    }): CancelablePromise<CurrentUserDto> {
+        return __request(OpenAPI, {
+            method: 'POST',
+            url: '/authorization/setup-new-password',
+            body: requestBody,
+            mediaType: 'application/json',
         });
     }
 }
