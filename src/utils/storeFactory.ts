@@ -35,7 +35,10 @@ export const storeFactory = <State>(initValue: State) => {
     })
   });
 
+  const setEvent = createStoreEvent<State>((_, payload) => payload);
+
   return {
+    setEvent,
     useStore: () => useUnit([$currentStore, changeEvent]),
     useAsyncMethod,
     createStoreEvent,
