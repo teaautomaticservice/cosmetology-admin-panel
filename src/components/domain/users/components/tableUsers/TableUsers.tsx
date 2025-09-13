@@ -1,5 +1,5 @@
 import { useEffect } from 'react';
-import { usePagination } from '@hooks/usePagination';
+import { usePagination } from '@shared/hooks/usePagination';
 import { paths } from '@router/paths';
 import { useUsersStore } from '@stores/users';
 import { User } from '@typings/api/users';
