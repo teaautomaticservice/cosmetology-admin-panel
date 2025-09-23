@@ -4,7 +4,7 @@ import type { ID } from "@typings/common";
 
 export const historyMessagesMethods = {
   getMessageList: async (): Promise<HistoryPaginated> => {
-    return HistoryService.historyControllerGetList();
+    return HistoryService.historyControllerGetList({});
   },
   getHistoryById: async (id: ID): Promise<History> => {
     return HistoryService.historyControllerGetItem({ id });
