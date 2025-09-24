@@ -1,5 +1,5 @@
 import { useEffect } from 'react';
-import { usePagination } from '@hooks/usePagination';
+import { usePagination } from '@shared/hooks/usePagination';
 import { dateUtils } from "@shared/utils/dateUtils";
 import { useLogsStore } from '@stores/logsStore';
 import type { Logs } from '@typings/api/logs';

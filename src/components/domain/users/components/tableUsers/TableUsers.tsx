@@ -1,6 +1,6 @@
 import { useEffect } from 'react';
-import { usePagination } from '@hooks/usePagination';
 import { paths } from '@router/paths';
+import { usePagination } from '@shared/hooks/usePagination';
 import { useUsersStore } from '@stores/users';
 import { User } from '@typings/api/users';
 import { Button, Space, Table } from 'antd';
