@@ -3,13 +3,13 @@ import { useModalStore } from '@stores/modal';
 import { MODALS_TYPE } from '@typings/modals';
 import { Button } from 'antd';
 
-import { TableUsers } from './components/tableUsers/TableUsers'
+import { TableUsers } from './components/tableUsers/TableUsers';
 
 export const Users: React.FC = () => {
   const { open } = useModalStore();
 
   const openUserModal = () => {
-    open(MODALS_TYPE.ADD_USER)
+    open(MODALS_TYPE.ADD_USER);
   };
 
   return (

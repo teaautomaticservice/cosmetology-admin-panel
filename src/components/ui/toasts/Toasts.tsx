@@ -9,8 +9,8 @@ export const Toasts: React.FC = () => {
     api.success({
       message: 'Success',
       ...props,
-    })
-  }
+    });
+  };
 
   useEffect(() => {
     const unsubscribe = toastEventBus.on('addToast', (payload) => {
@@ -19,12 +19,12 @@ export const Toasts: React.FC = () => {
 
     return () => {
       unsubscribe();
-    }
-  }, [])
+    };
+  }, []);
 
   return (
     <>
       {contextHolder}
     </>
-  )
-}
+  );
+};

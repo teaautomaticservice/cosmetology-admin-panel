@@ -1,7 +1,7 @@
-import type { AxiosError } from "axios";
-import type { Event, EventCallable } from "effector";
-import { createEffect, createEvent, createStore } from "effector";
-import { useUnit } from "effector-react";
+import type { AxiosError } from 'axios';
+import type { Event, EventCallable } from 'effector';
+import { createEffect, createEvent, createStore } from 'effector';
+import { useUnit } from 'effector-react';
 
 type Reducer<State, Payload> = (state: State, payload: Payload) => State | void;
 
@@ -26,13 +26,13 @@ export const storeFactory = <State>(initValue: State) => {
 
   const changeEvent = createStoreEvent<Partial<State>>((oldState, payload) => {
     if (payload !== Object(payload)) {
-      return payload as State
+      return payload as State;
     }
 
     return ({
       ...oldState,
       ...payload,
-    })
+    });
   });
 
   const setEvent = createStoreEvent<State>((_, payload) => payload);

@@ -3,7 +3,7 @@ import { useAppConfigStore } from '@stores/appConfig';
 import { LoginForm } from './type';
 
 export const useLoginServices = () => {
-  const { login, isAuthLoading } = useAppConfigStore()
+  const { login, isAuthLoading } = useAppConfigStore();
   const submit = async (form: LoginForm) => {
     try {
       await login(form);
@@ -16,5 +16,5 @@ export const useLoginServices = () => {
   return {
     isAuthLoading,
     submit,
-  }
-}
+  };
+};

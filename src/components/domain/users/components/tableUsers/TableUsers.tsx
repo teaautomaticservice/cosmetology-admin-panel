@@ -10,7 +10,7 @@ export const TableUsers: React.FC = () => {
   const { updateUsersFromApi, usersList, isUsersListLoading } = useUsersStore();
   const { params, updatePaginationParams } = usePagination({
     updater: updateUsersFromApi,
-  })
+  });
 
   const columns: ColumnsType<User> = [
     {

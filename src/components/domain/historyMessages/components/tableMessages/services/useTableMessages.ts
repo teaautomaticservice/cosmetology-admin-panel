@@ -1,4 +1,3 @@
-
 import { historyMessagesMethods } from '@apiMethods/historyApi';
 import { useHistoryMessagesStore } from '@stores/historyMessages';
 import { useModalStore } from '@stores/modal';
@@ -13,16 +12,16 @@ export const useTableMessages = () => {
   const deleteMessage = async (id: ID) => {
     const { data } = await historyMessagesMethods.removeHistory(id);
     updateHistoryMessages(data);
-  }
+  };
 
   const editMessage = (history: History) => {
     open(MODALS_TYPE.HISTORY, { history });
-  }
+  };
 
   return {
     data: historyMessages,
     deleteMessage,
     editMessage,
     isHistoryLoading,
-  }
+  };
 };

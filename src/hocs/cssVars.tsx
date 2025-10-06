@@ -5,7 +5,6 @@ export const cssVars = {
   '--light-accent': colors.red3,
 } as React.CSSProperties;
 
-
 export const withCssVars = (Component: React.FC): React.FC => {
   return (props: any) => {
     return (

@@ -1,4 +1,3 @@
-
 export type EventBus<T = unknown> = Record<string, T>;
 
 export const eventBusFactory = <EventBus>() => {
@@ -23,7 +22,7 @@ export const eventBusFactory = <EventBus>() => {
     return () => {
       eventBus.removeEventListener(eventName as string, listener as EventListener);
     };
-  }
+  };
 
   return { emit, on };
-}
+};

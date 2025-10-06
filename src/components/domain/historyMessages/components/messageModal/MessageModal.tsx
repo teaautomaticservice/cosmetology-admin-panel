@@ -2,8 +2,8 @@ import { historyMessagesMethods } from '@apiMethods/historyApi';
 import { useHistoryMessagesStore } from '@stores/historyMessages';
 import { useModalStore } from '@stores/modal';
 import { History } from '@typings/api/historyMessage';
-import { dateUtils } from "@utils/dateUtils";
-import { Input,Modal } from 'antd';
+import { dateUtils } from '@utils/dateUtils';
+import { Input, Modal } from 'antd';
 import { Controller, SubmitHandler, useForm } from 'react-hook-form';
 
 import { UpdateMessageForm } from './types';
@@ -17,7 +17,7 @@ export const MessageModal: React.FC<Props> = ({ history }) => {
   const { updateHistoryMessages } = useHistoryMessagesStore();
   const { handleSubmit, control: formControl, reset, getValues } = useForm({
     defaultValues: {
-      message: "",
+      message: '',
     }
   });
 
@@ -54,4 +54,4 @@ export const MessageModal: React.FC<Props> = ({ history }) => {
       </form>
     </Modal>
   );
-} 
+}; 

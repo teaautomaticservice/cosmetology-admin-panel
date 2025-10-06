@@ -4,7 +4,7 @@ import { useModalStore } from '@stores/modal';
 import { useUserDetailStore } from '@stores/userDetail';
 import { MODALS_TYPE } from '@typings/modals';
 import { toastEventBus } from '@utils/domain/toastEventBus';
-import { Modal } from 'antd'
+import { Modal } from 'antd';
 
 import s from './approveRestartCompleteRegistration.module.css';
 
@@ -28,7 +28,7 @@ export const ApproveRestartCompleteRegistration : React.FC = () => {
         setIsLoading(false);
       }
     }
-  }
+  };
 
   return (
     <Modal
@@ -47,5 +47,5 @@ export const ApproveRestartCompleteRegistration : React.FC = () => {
         Need to approve for restart complete registration for {userDetail?.displayName}
       </div>
     </Modal>
-  )
-}
+  );
+};

@@ -19,4 +19,4 @@ export const UserMenu: React.FC = () => {
       <Button>{userDisplayName}</Button>
     </Dropdown>
   );
-}
+};

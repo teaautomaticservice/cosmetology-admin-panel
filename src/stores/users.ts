@@ -36,5 +36,5 @@ export const useUsersStore = () => {
     usersList,
     updateUsersFromApi,
     isUsersListLoading,
-  }
-}
+  };
+};

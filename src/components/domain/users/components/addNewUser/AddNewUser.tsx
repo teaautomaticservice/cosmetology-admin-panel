@@ -46,14 +46,14 @@ export const AddNewUser: React.FC = () => {
   });
   const [isLoading, setIsLoading] = useState(false);
   const { updateUsersFromApi } = useUsersStore();
-  const [apiErrors, setApiErrors] = useState<FormApiError>({})
+  const [apiErrors, setApiErrors] = useState<FormApiError>({});
 
-  const { errors: formErrors } = formState
+  const { errors: formErrors } = formState;
 
   useEffect(() => {
     Object.entries(apiErrors).forEach(([key, value]) => {
       setError(key as keyof FormApiError, { message: value.join('\n') });
-    })
+    });
   }, [apiErrors]);
 
   const addUser: SubmitHandler<FormData> = async ({
@@ -62,7 +62,7 @@ export const AddNewUser: React.FC = () => {
     type
   }) => {
     setIsLoading(true);
-    setApiErrors({})
+    setApiErrors({});
     try {
       const createdUser = await usersApi.createUser({
         email,
@@ -175,5 +175,5 @@ export const AddNewUser: React.FC = () => {
         </div>
       </form>
     </Modal>
-  )
-}
+  );
+};

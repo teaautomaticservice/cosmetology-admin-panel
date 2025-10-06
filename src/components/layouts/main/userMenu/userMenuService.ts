@@ -13,4 +13,4 @@ export const useUserMenuService = () => {
     userDisplayName: currentUser?.displayName,
     logOut: logOutHandler,
   };
-}
+};

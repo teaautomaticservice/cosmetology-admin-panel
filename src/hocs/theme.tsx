@@ -1,7 +1,7 @@
-import React from "react";
+import React from 'react';
 import { colors } from '@ant/colors';
 import { Toasts } from '@components/ui/toasts/Toasts';
-import { ConfigProvider, ThemeConfig, } from "antd";
+import { ConfigProvider, ThemeConfig, } from 'antd';
 
 const themeConfig: ThemeConfig = {
   token: {
