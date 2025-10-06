@@ -14,17 +14,6 @@ import s from './style.module.css';
 const { Header, Content, Sider } = Layout;
 const { Title } = Typography;
 
-const messageMenu: MenuItemGroupType<MenuItemType> = {
-  label: 'Messages',
-  type: 'group',
-  children: [
-    {
-      label: 'Messages',
-      key: paths.main,
-    }
-  ]
-};
-
 const usersMenu: MenuItemGroupType<MenuItemType> = {
   label: 'Users',
   type: 'group',
@@ -42,15 +31,14 @@ const technicalMenu: MenuItemGroupType<MenuItemType> = {
   children: [
     {
       label: 'Logs',
-      key: paths.logs,
+      key: paths.main,
     },
   ]
 };
 
 const menuItems: (MenuItemType | MenuItemGroupType<MenuItemType>)[] = [
-  messageMenu,
-  usersMenu,
   technicalMenu,
+  usersMenu,
 ];
 
 const findCurrentMenuItems = (key: string): MenuItemType | null => {

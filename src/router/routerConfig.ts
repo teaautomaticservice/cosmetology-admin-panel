@@ -1,4 +1,3 @@
-import { HistoryMessage } from '@components/domain/historyMessages/HistoryMessage';
 import { Login } from '@components/domain/login/Login';
 import { Logs } from '@components/domain/logs/Logs';
 import { UserDetail } from '@components/domain/users/detail/UserDetail';
@@ -11,19 +10,10 @@ import { RouterPage } from './types';
 
 const logs: RouterPage[] = [
   {
-    path: paths.logs,
+    path: paths.main,
     Component: Logs,
     Layout: MainLayout,
     roles: ['superAdministrator'],
-  }
-];
-
-const main: RouterPage[] = [
-  {
-    path: paths.main,
-    Component: HistoryMessage,
-    Layout: MainLayout,
-    roles: ['administrator'],
   }
 ];
 
@@ -52,7 +42,6 @@ const authorization: RouterPage[] = [
 ];
 
 export const routerConfig: RouterPage[] = [
-  ...main,
   ...users,
   ...logs,
   ...authorization,
