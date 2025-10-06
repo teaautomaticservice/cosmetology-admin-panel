@@ -1,14 +1,14 @@
 import { useEffect } from 'react';
 import { HeadingContainer } from '@components/ui/headingContainer/HeadingContainer';
 import { useModalStore } from '@stores/modal';
-import { useUserDetailStore } from '@stores/userDetail'
+import { useUserDetailStore } from '@stores/userDetail';
 import { MODALS_TYPE } from '@typings/modals';
 import { Button } from 'antd';
 import { useParams } from 'react-router-dom';
 
 export const UserDetail: React.FC = () => {
   const { userDetail, isUserDetailLoading, updateUserDetailFromApi } = useUserDetailStore();
-  const { id } = useParams()
+  const { id } = useParams();
   const { open } = useModalStore();
 
   const openActionsModal = () => {
@@ -44,5 +44,5 @@ export const UserDetail: React.FC = () => {
         </div>
       )}
     </div>
-  )
-}
+  );
+};

@@ -9,16 +9,16 @@ export const withAppConfig = (Component: React.FC): React.FC => {
     const {
       isAppConfigLoaded,
       getAppConfigFromApi,
-    } = useAppConfigStore()
+    } = useAppConfigStore();
 
     useEffect(() => {
       getAppConfigFromApi();
     }, []);
 
     if (isAppConfigLoaded) {
-      return (<Component {...props} />)
+      return (<Component {...props} />);
     }
 
-    return (<Title>App is loading, please wait</Title>)
+    return (<Title>App is loading, please wait</Title>);
   };
 };

@@ -49,7 +49,7 @@ export const useAppConfigStore = () => {
     setIsAuthLoading(true);
     try {
       const currentUser = await authorizationMethods.login(loginForm);
-      updateAppConfig({ currentUser })
+      updateAppConfig({ currentUser });
     } finally {
       setIsAuthLoading(false);
     }
@@ -62,5 +62,5 @@ export const useAppConfigStore = () => {
     logOut,
     login,
     getAppConfigFromApi,
-  }
-}
+  };
+};

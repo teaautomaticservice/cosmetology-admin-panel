@@ -1,6 +1,6 @@
-import { historyMessagesMethods } from "@apiMethods/historyApi";
-import type { History } from "@typings/api/historyMessage";
-import { storeFactory } from "@utils/storeFactory";
+import { historyMessagesMethods } from '@apiMethods/historyApi';
+import type { History } from '@typings/api/historyMessage';
+import { storeFactory } from '@utils/storeFactory';
 
 const {
   useStore: useHistoryStore,
@@ -18,7 +18,7 @@ export const useHistoryMessagesStore = () => {
     const { data } = await historyMessagesMethods.getMessageList();
     setIsLoading(false);
     return data;
-  }
+  };
 
   const updateHistoryMessagesFromApi = useHistoryCreateEffect<void>(handleResponse);
   const updateHistoryMessages = (history: History[]) => {

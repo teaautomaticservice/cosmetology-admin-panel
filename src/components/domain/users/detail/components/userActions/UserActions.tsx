@@ -19,7 +19,7 @@ export const UserActions: React.FC = () => {
     <div>
       <Button onClick={() => close()}>Close</Button>
     </div>
-  )
+  );
 
   return (
     <Modal
@@ -39,4 +39,4 @@ export const UserActions: React.FC = () => {
       </div>
     </Modal>
   );
-}
+};

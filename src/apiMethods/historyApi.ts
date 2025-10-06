@@ -1,6 +1,6 @@
 import { HistoryService } from '@typings/api/generated';
-import type { History,HistoryPaginated } from "@typings/api/historyMessage";
-import type { ID } from "@typings/common";
+import type { History, HistoryPaginated } from '@typings/api/historyMessage';
+import type { ID } from '@typings/common';
 
 export const historyMessagesMethods = {
   getMessageList: async (): Promise<HistoryPaginated> => {

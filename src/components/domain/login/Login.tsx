@@ -55,5 +55,5 @@ export const Login: React.FC = () => {
         </Button>
       </Form.Item>
     </Form>
-  )
-}
+  );
+};

@@ -1,16 +1,16 @@
-import { useEffect } from "react";
-import { historyMessagesMethods } from "@apiMethods/historyApi";
-import { useHistoryMessagesStore } from "@stores/historyMessages";
-import { SubmitHandler,useForm } from 'react-hook-form';
+import { useEffect } from 'react';
+import { historyMessagesMethods } from '@apiMethods/historyApi';
+import { useHistoryMessagesStore } from '@stores/historyMessages';
+import { SubmitHandler, useForm } from 'react-hook-form';
 
-import type { HistoryForm } from "../types";
+import type { HistoryForm } from '../types';
 
 export const useAddMessageForm = () => {
   const { updateHistoryMessages, updateHistoryMessagesFromApi } = useHistoryMessagesStore();
 
   const { handleSubmit, control: formControl, reset } = useForm({
     defaultValues: {
-      message: "",
+      message: '',
     }
   });
   
@@ -24,10 +24,10 @@ export const useAddMessageForm = () => {
 
   useEffect(() => {
     updateHistoryMessagesFromApi();
-  }, [])
+  }, []);
 
   return {
     formControl,
     submitForm,
-  }
-}
+  };
+};

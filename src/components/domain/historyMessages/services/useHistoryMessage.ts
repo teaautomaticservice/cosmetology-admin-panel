@@ -1,12 +1,12 @@
-import { useHistoryMessagesStore } from "@stores/historyMessages";
+import { useHistoryMessagesStore } from '@stores/historyMessages';
 
 export const useHistoryMessage = () => {
   const { updateHistoryMessagesFromApi, isHistoryLoading } = useHistoryMessagesStore();
 
-  const updateHistories = () => updateHistoryMessagesFromApi()
+  const updateHistories = () => updateHistoryMessagesFromApi();
 
   return {
     updateHistories,
     isHistoryLoading,
-  }
-}
+  };
+};

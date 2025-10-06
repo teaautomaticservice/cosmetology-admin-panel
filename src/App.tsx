@@ -1,4 +1,4 @@
-import React from "react";
+import React from 'react';
 import { RouterHistory } from '@router/RouterHistory';
 import compose from '@utils/compose';
 
@@ -16,6 +16,6 @@ const App: React.FC = () => {
   return (
     <RouterHistory />
   );
-}
+};
 
 export default withAppData(App);

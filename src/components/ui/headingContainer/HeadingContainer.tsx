@@ -11,5 +11,5 @@ export const HeadingContainer: React.FC<Props> = ({ children }) => {
     <div className={s.root}>
       {children}
     </div>
-  )
-}
+  );
+};

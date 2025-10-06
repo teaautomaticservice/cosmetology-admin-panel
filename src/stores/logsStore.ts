@@ -30,13 +30,13 @@ export const useLogsStore = () => {
       data,
       count: meta.count,
     };
-  }
+  };
 
-  const updateLogsFromApi = useLogsListCreateEffect<void>(handleResponse)
+  const updateLogsFromApi = useLogsListCreateEffect<void>(handleResponse);
 
   return {
     logsList,
     updateLogsFromApi,
     isLogsListLoading,
-  }
-}
+  };
+};

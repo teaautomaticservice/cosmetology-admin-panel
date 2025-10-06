@@ -1,4 +1,4 @@
-import { UsersService } from '@typings/api/generated'
+import { UsersService } from '@typings/api/generated';
 import { CreateUser, UsersList } from '@typings/api/users';
 import { getSearchParams } from '@utils/getSearchParams';
 
@@ -15,12 +15,12 @@ export const usersApi = {
     return UsersService.usersControllerCreateUser({ requestBody: data });
   },
   getUserDetail: async (id: number) => {
-    return UsersService.usersControllerGetUserById({ id })
+    return UsersService.usersControllerGetUserById({ id });
   },
   userHardResetPassword: async (userId: number) => {
-    return UsersService.usersControllerInitiateHardResetPassword({ requestBody: { userId }})
+    return UsersService.usersControllerInitiateHardResetPassword({ requestBody: { userId } });
   },
   userRestartCompleteRegistration: async (userId: number) => {
     return UsersService.usersControllerRestartCompleteRegistration({ id: userId });
   }
-}
+};

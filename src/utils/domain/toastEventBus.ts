@@ -1,4 +1,4 @@
-import { eventBusFactory } from '@utils/eventBusFactory'
+import { eventBusFactory } from '@utils/eventBusFactory';
 
 export type ToastProps = {
   description: string;

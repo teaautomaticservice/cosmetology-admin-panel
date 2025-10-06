@@ -4,12 +4,12 @@ import { paths } from '@router/paths';
 import { Layout, Menu, Space, Typography } from 'antd';
 import { MenuItemGroupType, MenuItemType } from 'antd/es/menu/interface';
 import { MenuClickEventHandler } from 'rc-menu/lib/interface';
-import { useLocation, useNavigate } from "react-router-dom";
+import { useLocation, useNavigate } from 'react-router-dom';
 import { APP_NAME } from 'src/constants/app';
 
 import { UserMenu } from './userMenu/userMenu';
 
-import s from './style.module.css'
+import s from './style.module.css';
 
 const { Header, Content, Sider } = Layout;
 const { Title } = Typography;
@@ -34,7 +34,7 @@ const usersMenu: MenuItemGroupType<MenuItemType> = {
       key: paths.users,
     }
   ]
-}
+};
 
 const technicalMenu: MenuItemGroupType<MenuItemType> = {
   label: 'Technical',
@@ -70,16 +70,16 @@ export const MainLayout: React.FC = ({ children }: React.PropsWithChildren) => {
 
   const onClick: MenuClickEventHandler = ({ key }) => {
     if (typeof key === 'string') {
-      navigate(key)
+      navigate(key);
     }
-  }
+  };
 
   useEffect(() => {
     const selectedItem = findCurrentMenuItems(chapterOfPath);
     if (selectedItem?.label) {
       setTitle(selectedItem.label.toString());
     }
-  }, [chapterOfPath])
+  }, [chapterOfPath]);
 
   return (
     <Layout className={s.root}>
@@ -107,4 +107,4 @@ export const MainLayout: React.FC = ({ children }: React.PropsWithChildren) => {
       <RootModal />
     </Layout>
   );
-}
+};

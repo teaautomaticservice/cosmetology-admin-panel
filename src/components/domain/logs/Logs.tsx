@@ -5,5 +5,5 @@ export const Logs: React.FC = () => {
     <div>
       <TableLogs />
     </div>
-  )
-}
+  );
+};

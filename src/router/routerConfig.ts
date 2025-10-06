@@ -49,7 +49,7 @@ const authorization: RouterPage[] = [
     Layout: UnauthorizedLayout,
     roles: ['unauthorized'],
   }
-]
+];
 
 export const routerConfig: RouterPage[] = [
   ...main,

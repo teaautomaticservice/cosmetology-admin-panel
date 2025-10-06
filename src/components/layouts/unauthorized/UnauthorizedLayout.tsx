@@ -15,5 +15,5 @@ export const UnauthorizedLayout: React.FC = ({ children }: React.PropsWithChildr
 
       <div className={s.wrapper}>{children}</div>
     </div>
-  )
-}
+  );
+};

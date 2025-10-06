@@ -1,7 +1,7 @@
-import { CSSProperties } from "react";
+import { CSSProperties } from 'react';
 
 export const style: Record<string, CSSProperties> = {
   buttonForm: {
-    width: "100%",
+    width: '100%',
   },
 };

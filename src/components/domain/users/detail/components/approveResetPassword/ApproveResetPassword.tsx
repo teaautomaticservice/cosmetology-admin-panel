@@ -4,7 +4,7 @@ import { useModalStore } from '@stores/modal';
 import { useUserDetailStore } from '@stores/userDetail';
 import { MODALS_TYPE } from '@typings/modals';
 import { toastEventBus } from '@utils/domain/toastEventBus';
-import { Modal } from 'antd'
+import { Modal } from 'antd';
 
 import s from './approveResetPassword.module.css';
 
@@ -28,7 +28,7 @@ export const ApproveResetPassword: React.FC = () => {
         setIsLoading(false);
       }
     }
-  }
+  };
 
   return (
     <Modal
@@ -47,5 +47,5 @@ export const ApproveResetPassword: React.FC = () => {
         Need to approve for hard reset of password for user {userDetail?.displayName}
       </div>
     </Modal>
-  )
-}
+  );
+};
