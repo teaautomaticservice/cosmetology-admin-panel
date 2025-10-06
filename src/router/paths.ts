@@ -4,7 +4,6 @@ export const paths = {
   users: '/users',
   userDetail: (userId: string = ':id') => `/users/${userId}`,
 
-
   // unauthorized
   login: '/login',
 };
